@@ -2,13 +2,31 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://pufengyixia.github.io</id>
     <title>pufengyixia</title>
-    <updated>2020-05-17T02:37:12.259Z</updated>
+    <updated>2020-05-17T02:43:34.509Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://pufengyixia.github.io"/>
     <link rel="self" href="https://pufengyixia.github.io/atom.xml"/>
     <logo>https://pufengyixia.github.io/images/avatar.png</logo>
     <icon>https://pufengyixia.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, pufengyixia</rights>
+    <entry>
+        <title type="html"><![CDATA[Flarum网站实用工具]]></title>
+        <id>https://pufengyixia.github.io/post/flarum-wang-zhan-shi-yong-gong-ju/</id>
+        <link href="https://pufengyixia.github.io/post/flarum-wang-zhan-shi-yong-gong-ju/">
+        </link>
+        <updated>2020-05-16T19:37:53.000Z</updated>
+        <content type="html"><![CDATA[<p>Markdown 发帖教程<br>
+<a href="https://www.runoob.com/markdown/md-tutorial.html">https://www.runoob.com/markdown/md-tutorial.html</a></p>
+<p>Squoosh 谷歌图片压缩<br>
+<a href="https://squoosh.app/">https://squoosh.app/</a></p>
+<p>SM.MS 外链图床<br>
+<a href="https://sm.ms/">https://sm.ms/</a></p>
+<p>TMP 临时文件中转<br>
+<a href="https://app.tmp.link/">https://app.tmp.link/</a></p>
+<p>Zen - Online Text Editor<br>
+<a href="https://zen.unit.ms/">https://zen.unit.ms/</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CentOS 7 安装Flarum中文搜索插件]]></title>
         <id>https://pufengyixia.github.io/post/centos-7-an-zhuang-flarum-zhong-wen-sou-suo-cha-jian/</id>
