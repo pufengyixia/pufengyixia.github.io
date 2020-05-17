@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://pufengyixia.github.io</id>
     <title>pufengyixia</title>
-    <updated>2020-05-17T02:28:40.496Z</updated>
+    <updated>2020-05-17T02:37:12.259Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://pufengyixia.github.io"/>
     <link rel="self" href="https://pufengyixia.github.io/atom.xml"/>
@@ -729,6 +729,22 @@ Swap:         4095          0       4095</p>
 结论</p>
 <p>通过遵循本指南中的步骤，您将为服务器提供一些内存使用方面的喘息空间。交换空间对于避免一些常见问题非常有用。</p>
 <p>如果遇到OOM（内存不足）错误，或者发现系统无法使用所需的应用程序，则最佳解决方案是优化应用程序配置或升级服务器。但是，配置交换空间可以为您提供更大的灵活性，并可以帮助您在功能不那么强大的服务器上花费时间。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Flarum标签美化]]></title>
+        <id>https://pufengyixia.github.io/post/flarum-biao-qian-mei-hua/</id>
+        <link href="https://pufengyixia.github.io/post/flarum-biao-qian-mei-hua/">
+        </link>
+        <updated>2020-05-16T12:31:37.000Z</updated>
+        <content type="html"><![CDATA[<p>HTML颜色代码<br>
+<a href="https://htmlcolorcodes.com/zh/">https://htmlcolorcodes.com/zh/</a></p>
+<p>标签配色代码<br>
+<a href="https://www.happyhues.co/">https://www.happyhues.co/</a></p>
+<p>Awesome免费图标<br>
+<a href="https://fontawesome.com/icons?m=free">https://fontawesome.com/icons?m=free</a></p>
+<p>DeepL翻译<br>
+<a href="https://www.deepl.com/translator">https://www.deepl.com/translator</a></p>
 ]]></content>
     </entry>
     <entry>
