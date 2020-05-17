@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Centos 7安装与配置Flarum | pufengyixia</title>
+<meta name="description" content="">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://pufengyixia.github.io/favicon.ico?v=1589681547859">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://pufengyixia.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://pufengyixia.github.io">pufengyixia</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>Centos 7安装与配置Flarum</h1>
+            <p class="article-meta">
+              2020-05-16
+              
+            </p>
+            
+            <div class="post-content">
+              <pre><code>Flarum 是一款非常棒的开源论坛程序，Halo 的论坛 就是用 Flarum 搭建的。之前有人问过我 Flarum 如何搭建，所以下面讲一下 Flarum 的搭建过程（btw，官方的搭建教程实在草率）。
+</code></pre>
+<p>前提</p>
+<pre><code>域名需要提前解析。
+注意服务器是否需要备案，如果没备案，会被 x 掉。
+有一定的 Linux 基础。
+</code></pre>
+<p>环境说明</p>
+<pre><code>Linux Server（本文是用的 CentOS 7.7）
+Apache 或者 Nginx（本文是用的 Nginx）
+PHP 7.3+
+PHP 拓展： curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip, fileinfo
+MySQL 5.7+ 
+</code></pre>
+<p>部署环境安装<br>
+更新服务器软件包</p>
+<p>yum update -y</p>
+<p>安装 Nginx/PHP/MySQL</p>
+<pre><code>这里我们使用 OneinStack 一键安装，人生苦短，懒得自己编译了（绝不是因为我不会🌚）。当然，如果有时间，自己编译安装更好。
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://cdn.ryanc.cc/img/blog/thumbnails/38771f8f695f99bd0539db42af0f2e69.png" alt="OneInStack" loading="lazy"></figure>
+<p>如上图，选择好需要的软件以及版本后，复制自动安装命令到服务器执行就行了，安装过程可能会有点慢，耐心等待就行了。</p>
+<p>wget -c http://mirrors.linuxeye.com/oneinstack-full.tar.gz &amp;&amp; tar xzf oneinstack-full.tar.gz &amp;&amp; ./oneinstack/install.sh --nginx_option 1 --php_option 8 --phpcache_option 1 --php_extensions fileinfo --phpmyadmin  --db_option 2 --dbinstallmethod 1 --dbrootpwd oneinstack --pureftpd  --redis  --memcached  --reboot</p>
+<pre><code>需要注意的是，PHP 扩展中的 fileinfo 一定要勾选，Flarum 官方文档居然没有写需要这个扩展。(没错，这里我被坑了，嘤嘤嘤嘤~)
+</code></pre>
+<p>安装完成应该会打印出这些东西：</p>
+<figure data-type="image" tabindex="2"><img src="https://cdn.ryanc.cc/img/blog/thumbnails/6902ec905fc810f533910402cbd43662.png" alt="Oneinstack-success" loading="lazy"></figure>
+<p>安装 Composer</p>
+<p>php -r &quot;copy('https://install.phpcomposer.com/installer', 'composer-setup.php');&quot;</p>
+<p>php composer-setup.php</p>
+<p>php -r &quot;unlink('composer-setup.php');&quot;</p>
+<p>mv composer.phar /usr/local/bin/composer</p>
+<p>由于 Composer 的服务器在国外，可能导致下载 Flarum 已经依赖包会很慢，所以我们需要更换一下源地址。至于 Composer 是啥，其实就是 PHP 的一个包管理，类似 Java 的 Maven 和 Gradle 工具。</p>
+<p>composer config -g repo.packagist composer https://packagist.phpcomposer.com</p>
+<p>安装 Flarum</p>
+<p>进入到 oneinstack 目录，执行 vhost.sh 脚本新建一个网站<br>
+<img src="https://cdn.ryanc.cc/img/blog/thumbnails/c608cda88c610ae302e895bf723e3515.png" alt="OneInStack-vhost" loading="lazy"></p>
+<p>然后会提示 SSL 证书选项，网站目录之类的东西，按照自己的需求选择即可。</p>
+<p>创建完成后应该是这样子。<br>
+<img src="https://cdn.ryanc.cc/img/blog/thumbnails/56c950fe8a52e135b217e75026d48de8.png" alt="OneInStack-new-site" loading="lazy"></p>
+<p>然后进入网站目录执行：</p>
+<p>cd /data/wwwroot/bbs.ryanwang.me</p>
+<p>composer create-project flarum/flarum . --stability=beta</p>
+<p>然后等待下载 Flarum 以及对应的依赖即可，安装完成应该是这个样子的：<br>
+<img src="https://cdn.ryanc.cc/img/blog/thumbnails/34286be66336e95f86ff2f59349cfa70.png" alt="Flarum-install-success" loading="lazy"></p>
+<p>配置运行</p>
+<p>上面其实就已经安装好了 Flarum，但是还需要进一步配置才能正确运行。<br>
+创建数据库</p>
+<p>登陆 MySQL：</p>
+<p>mysql -u root -p密码flarum</p>
+<p>创建数据库：</p>
+<p>create database flarum character set utf8mb4 collate utf8mb4_bin;</p>
+<pre><code>这里的字符集一定要是 utf8mb4，至于为什么是 utf8mb4，参考：https://www.jianshu.com/p/6967ce16a202。也可以进数据库后台创建数据库，比如在谷歌浏览器输入http://188.88.88.88/phpMyAdmin ，用户名一般是root，密码是前面在我们使用OneinStack一键安装时填入的数据库密码oneinstack。创建数据库flarum，数据库字符集为utf8mb4。
+</code></pre>
+<p>修改 Nginx 配置</p>
+<p>进入 Nginx 配置文件目录：</p>
+<p>cd /usr/local/nginx/conf/vhost</p>
+<p>修改网站的配置文件：</p>
+<p>nano nginx.conf</p>
+<p>需要修改的地方：</p>
+<pre><code>root：需要在路径后面加上 public，比如我的原本是 root /data/wwwroot/bbs.ryanwang.me;，需要修改为 root /data/wwwroot/bbs.ryanwang.me/public;。
+引入 Flarum 提供的配置，在nginx.conf配置文件末尾 server }大括号}中任意位置加上 include /data/wwwroot/bbs.ryanwang.me/.nginx.conf;，bbs.ryanwang.me 为网站目录名。
+比如我的是  } include /data/wwwroot/bbs.ryanwang.me/.nginx.conf;}
+</code></pre>
+<p>最后的配置示例：</p>
+<p>server {<br>
+listen 80;<br>
+listen 443 ssl http2;<br>
+ssl_certificate /usr/local/nginx/conf/ssl/bbs.ryanwang.me.crt;<br>
+ssl_certificate_key /usr/local/nginx/conf/ssl/bbs.ryanwang.me.key;<br>
+ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;<br>
+ssl_ciphers TLS13-AES-256-GCM-SHA384:TLS13-CHACHA20-POLY1305-SHA256:TLS13-AES-128-GCM-SHA256:TLS13-AES-128-CCM-8-SHA256:TLS13-AES-128-CCM-SHA256:EECDH+CHACHA20:EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;<br>
+ssl_prefer_server_ciphers on;<br>
+ssl_session_timeout 10m;<br>
+ssl_session_cache builtin:1000 shared:SSL:10m;<br>
+ssl_buffer_size 1400;<br>
+add_header Strict-Transport-Security max-age=15768000;<br>
+ssl_stapling on;<br>
+ssl_stapling_verify on;<br>
+server_name bbs.ryanwang.me;<br>
+access_log /data/wwwlogs/bbs.ryanwang.me_nginx.log combined;<br>
+index index.html index.htm index.php;<br>
+root /data/wwwroot/bbs.ryanwang.me/public;<br>
+if (<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;}&#039;, got &#039;EOF&#039; at end of input: …rn 301 https://'>ssl_protocol = &quot;&quot;) { return 301 https://</span>host$request_uri; }</p>
+<p>include /usr/local/nginx/conf/rewrite/other.conf;<br>
+#error_page 404 /404.html;<br>
+#error_page 502 /502.html;</p>
+<p>location ~ [^/].php(/|$) {<br>
+#fastcgi_pass remote_php_ip:9000;<br>
+fastcgi_pass unix:/dev/shm/php-cgi.sock;<br>
+fastcgi_index index.php;<br>
+include fastcgi.conf;<br>
+}</p>
+<p>location ~ .<em>.(gif|jpg|jpeg|png|bmp|swf|flv|mp4|ico)$ {<br>
+expires 30d;<br>
+access_log off;<br>
+}<br>
+location ~ .</em>.(js|css)?$ {<br>
+expires 7d;<br>
+access_log off;<br>
+}<br>
+location ~ /(.user.ini|.ht|.git|.svn|.project|LICENSE|README.md) {<br>
+deny all;<br>
+}</p>
+<p>include /data/wwwroot/bbs.ryanwang.me/.nginx.conf;</p>
+<p>}</p>
+<p>最后我们需要检查 Nginx 配置是否有误并重载 Nginx 配置：</p>
+<p>nginx -t</p>
+<p>nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok</p>
+<p>nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful</p>
+<p>nginx -s reload</p>
+<p>Flarum 安装引导</p>
+<p>如果出现下面的情况：<br>
+<img src="https://cdn.ryanc.cc/img/blog/thumbnails/7243e69819dd45fe52789c07ad88351f.png" alt="Flarum-install-page-1" loading="lazy"></p>
+<p>是因为没有对网站目录/data/wwwroot/bbs.ryanwang.me写入的权限，我们加一下权限即可：</p>
+<h1 id="datawwwrootbbsryanwangme为网站目录名称">/data/wwwroot/bbs.ryanwang.me为网站目录名称</h1>
+<p>chmod -R 775 /data/wwwroot/bbs.ryanwang.me</p>
+<p>然后刷新页面就可以看到安装表单了。<br>
+<img src="https://cdn.ryanc.cc/img/blog/thumbnails/6aa3c74ae3c3e54f7579b9ad34884dd8.png" alt="Flarum-install-page-2" loading="lazy"></p>
+<p>然后填写数据库信息以及管理员信息，点击安装即可。这里填数据库名的时候要注意一下，<br>
+一般数据库名填root，数据库用户名才是前面你填的flarum。<br>
+<img src="https://www.itnt.xyz/wp-content/uploads/2019/12/Snipaste_2019-12-12_16-02-05-807x1024.jpg" alt="Flarum-install-Mysql" loading="lazy"></p>
+<p>安装部署部分到此结束。</p>
+<p>常用插件安装</p>
+<pre><code>安装完成后会发现不支持中文，所以我们需要安装中文语言包。还有一些常用的插件。更多插件推荐，请前往此处https://bbs.csur.fun/d/84-flarum 查看。
+建议每次装完插件后，运行一次清理缓存命令 php flarum cache:clear
+
+#　/data/wwwroot/bbs.ryanwang.me为网站目录名称，因为安装插件需在 Flarum 根目录执行。
+
+cd /data/wwwroot/bbs.ryanwang.me
+</code></pre>
+<p>#　简体中文语言包</p>
+<pre><code>composer require littlegolden/flarum-lang-simplified-chinese
+</code></pre>
+<p>#　繁体中文语言包</p>
+<pre><code>composer require csineneo/lang-traditional-chinese
+</code></pre>
+<p>#　编辑器 Emoji 表情选择框</p>
+<pre><code>composer require clarkwinkelmann/flarum-ext-emojionearea
+</code></pre>
+<p>#　导航栏菜单插件</p>
+<pre><code>composer require fof/links
+</code></pre>
+<p>#　最佳回答</p>
+<pre><code>composer require wiwatsrt/flarum-ext-best-answer
+</code></pre>
+<p>#　显示帖子阅读次数</p>
+<pre><code>composer require michaelbelgium/flarum-discussion-views
+</code></pre>
+<p>#　论坛用户列表</p>
+<pre><code>composer require avatar4eg/flarum-ext-users-list
+</code></pre>
+<p>#　生成静态页面</p>
+<pre><code>composer require fof/pages
+</code></pre>
+<p>#　在帖子中直接生成外链预览小图（此插件已标记为弃用，请勿再安装）</p>
+<pre><code>composer require zerosonesfun/flarum-ext-link-previews
+</code></pre>
+<p>#　上传文件</p>
+<pre><code>composer require fof/upload
+</code></pre>
+<p>#　插件商店</p>
+<pre><code>composer require extiverse/bazaar
+</code></pre>
+<p>#　Sitemap 生成器</p>
+<pre><code>composer require flagrow/sitemap
+</code></pre>
+<p>#　Fancybox 插件</p>
+<pre><code>composer require squeevee/flarum-ext-fancybox
+</code></pre>
+<p>安装完成后去后台启用即可（后台地址：网址/admin）<br>
+<img src="https://cdn.ryanc.cc/img/blog/thumbnails/168c9ee1aecd24300d8bdeb92755770b.png" alt="Flarum-extension" loading="lazy"></p>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://pufengyixia.github.io/post/ru-he-zai-centos-7-shang-tian-jia-swap-jiao-huan-kong-jian/">
+                <h3 class="post-title">
+                  如何在CentOS 7上添加Swap 交换空间
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://pufengyixia.github.io/images/avatar.png?v=1589681547859" class="no-responsive avatar">
+    <div class="text-muted"></div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://pufengyixia.github.io/post/csur-zhan-dian-quan-ju-zi-ding-yi-css-yang-shi-fen-xiang/">CSUR站点全局自定义 CSS 样式分享</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://pufengyixia.github.io/post/centos-7-an-zhuang-flarum-zhong-wen-sou-suo-cha-jian/">CentOS 7 安装Flarum中文搜索插件</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://pufengyixia.github.io/post/flarum-cha-jian-tui-jian/">Flarum 插件推荐</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://pufengyixia.github.io/post/centos-7-an-zhuang-yu-pei-zhi-flarum/">Centos 7安装与配置Flarum</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://pufengyixia.github.io/post/ru-he-zai-centos-7-shang-tian-jia-swap-jiao-huan-kong-jian/">如何在CentOS 7上添加Swap 交换空间</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://pufengyixia.github.io/post/about/">关于</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://pufengyixia.github.io/post/hello-gridea/">Hello Gridea</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://pufengyixia.github.io/tag/s9-Akorr0/" class="badge success">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://pufengyixia.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,951 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://pufengyixia.github.io</id>
+    <title>pufengyixia</title>
+    <updated>2020-05-17T02:12:30.788Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://pufengyixia.github.io"/>
+    <link rel="self" href="https://pufengyixia.github.io/atom.xml"/>
+    <logo>https://pufengyixia.github.io/images/avatar.png</logo>
+    <icon>https://pufengyixia.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2020, pufengyixia</rights>
+    <entry>
+        <title type="html"><![CDATA[CSUR站点全局自定义 CSS 样式分享]]></title>
+        <id>https://pufengyixia.github.io/post/csur-zhan-dian-quan-ju-zi-ding-yi-css-yang-shi-fen-xiang/</id>
+        <link href="https://pufengyixia.github.io/post/csur-zhan-dian-quan-ju-zi-ding-yi-css-yang-shi-fen-xiang/">
+        </link>
+        <updated>2020-05-16T18:47:12.000Z</updated>
+        <content type="html"><![CDATA[<p>选择两种颜色作为论坛主色调。第一种作为突出显示颜色#F18300，<br>
+第二种作为背景等元素的颜色#E7672E。<br>
+复制CSS 样式到后台管理-外观-自定义样式，然后启用彩色导航栏。</p>
+<pre><code class="language-/*">.UserDirectoryList-loadMore .Button,
+.DiscussionList-loadMore .Button {
+	 width: 50%;
+         border-radius: 30px;
+         margin-top: 30px;
+}
+.UserDirectoryList-loadMore {
+    text-align: center;
+}
+@media (max-width: 767px) {
+	.DiscussionList-loadMore {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+/* 替换点赞, 回复按钮 */
+.item-like .Button--link .Button-label,
+.item-reply .Button--link .Button-label{
+    display: none;
+}
+.item-like .Button:before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 600;
+    font-size: 14px;
+    content: '\f164';
+    vertical-align: -1px;
+}
+.item-reply .Button--link:before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 600;
+    font-size: 15px;
+    content: '\f3e5';
+    margin-right: 4px;
+    vertical-align: -2px;
+}
+
+/* 首页主题点击量对齐 */
+@media (min-width: 768px){
+	.IndexPage li.item-discussion-views {
+		margin-right: -70px;
+		width: 55px;
+	}
+}
+
+/* 反应按钮位置 */
+.Post-actions .Reactions .Reactions--ShowReactions {
+    margin-top: 11px;
+}
+
+/* 表格阴影去除 */
+.Post .Post-body table{
+	box-shadow: none;
+}
+
+/* 卡片主题 */
+.IndexPage .DiscussionListItem,
+.UserPage .DiscussionListItem,
+.DiscussionPage-discussion .DiscussionListItem{ 
+    transition: all 0.1s; /* 动画时间 */
+}
+@media (min-width: 991px){
+    .IndexPage .DiscussionList-discussions&gt;li:not(:first-child) .DiscussionListItem:hover{ /* 悬浮效果 */
+        transform: scale(1.01); /* 缩放 */
+    }
+}
+
+@media (min-width: 768px){ /* pc 端 */
+.IndexPage .DiscussionListItem-content,
+.UserPage .DiscussionListItem-content,
+.DiscussionPage-discussion .DiscussionListItem-content{ /* 首页、用户页、讨论页卡片大小、描边 */
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 10px;
+    border-radius: 8px;
+    padding-bottom: 10px;
+    border:1px solid #dbdfe6!important;
+}
+.IndexPage .Post.CommentPost,
+.UserPage .Post.CommentPost,
+.DiscussionPage-discussion .Post.CommentPost {
+    margin-top:20px;
+    border-radius: 8px;
+    border: 1px solid #dbdfe6 !important;
+}
+
+.IndexPage .DiscussionListItem-info&gt;.item-tags,
+.UserPage .DiscussionListItem-info&gt;.item-tags {top: 23px !important;}
+.DiscussionListItem {
+    position: relative;
+    margin-right: 0;
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 0;
+    border-radius: 8px;
+    margin-top:15px;
+}}
+
+@media (min-width: 768px){
+.IndexPage .DiscussionListItem:hover {
+background-color: #fff;
+-webkit-box-shadow: 0px 8px 24px 3px rgba(84,102,134,0.1) !important;
+box-shadow: 0px 8px 24px 3px rgba(84,102,134,0.1) !important;
+}}
+/* banner */
+.WelcomeHero{color: #282828;}
+.Hero h2 { font-size: 25px; font-weight: 700;}
+.Hero { box-shadow: 0px 1px 10px 0 rgba(151,158,181,0.28); background-color: #fff; margin-bottom: 15px;}
+/*.DiscussionHero .TagsLabel .TagLabel { color: #4D698E; }*/
+.WelcomeHero .Hero-subtitle {color: #000;}
+
+/* 未读 */
+.unread .DiscussionListItem-title:after {
+font-family: &quot;Font Awesome 5 Free&quot;;
+font-weight: 600;
+content: &quot;\f111&quot;;
+color: #667c99;
+margin-left: 2px ;
+margin-top:-6px;
+transform: scale(0.5);
+position:absolute;}
+.PostsUserPage .PostsUserPage-list .Post{
+    padding-top:20px;
+}
+/* 会员名录、资料卡片 */
+.UserDirectoryList .UserCard--directory {
+    box-shadow: 0 2px 6px transparent!important;
+    background-color: transparent!important;
+    border: 2px solid rgba(0,0,0,.1);
+    margin-bottom: 15px!important;
+    border-radius: 6px!important;
+}
+.UserCard, .UserCard a {
+    color: #40444a;
+}
+.UserCard {
+    background: #e8ecf3;
+    background-size: 100% 100%;
+}
+.darkenBackground {
+    background: #fff;
+    border-radius: 6px!important;
+}
+.Badge--social {
+    color: #4d698e!important;
+}
+/* 搜索框 */
+.Search-input input {
+    border-radius: 30px;
+}
+
+ul.IndexPage-toolbar-action&gt;li:not(:first-child) {
+    margin-top: 5px;
+}
+.IndexPage-toolbar-action {
+    margin-left: 15px;
+}
+.UserCard.UserCard--popover,
+.UserCard.Hero.UserHero {
+    background: none !important;
+}
+
+.UserCard .Button {
+    color: #667c99;
+    background: rgba(0,0,0,.1);
+}
+/* 欢迎横幅 */
+.Hero {
+    background: url(https://i.loli.net/2020/04/06/X7yt1xWieuTShnE.png) no-repeat top fixed;
+    text-align: center;
+    color: #FFFFFF;
+    height: 180px;
+    width: 100%;
+}</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CentOS 7 安装Flarum中文搜索插件]]></title>
+        <id>https://pufengyixia.github.io/post/centos-7-an-zhuang-flarum-zhong-wen-sou-suo-cha-jian/</id>
+        <link href="https://pufengyixia.github.io/post/centos-7-an-zhuang-flarum-zhong-wen-sou-suo-cha-jian/">
+        </link>
+        <updated>2020-05-16T18:39:54.000Z</updated>
+        <content type="html"><![CDATA[<p>0×0 系统更新</p>
+<p>yum update</p>
+<p>0×1 安装 gcc</p>
+<p>yum install gcc*</p>
+<p>0×2 安装 zlib</p>
+<p>yum install zlib*</p>
+<p>0×3 创建 xunsearch 安装目录</p>
+<p>cd<br>
+mkdir -p /usr/local/xunsearch</p>
+<p>0×4 下载 xunsearch</p>
+<p>cd /usr/local/xunsearch<br>
+wget http://www.xunsearch.com/download/xunsearch-full-latest.tar.bz2<br>
+tar -xjf xunsearch-full-latest.tar.bz2</p>
+<p>0×5 安装 xunsearch</p>
+<p>cd /usr/local/xunsearch/xunsearch-full-1.4.14<br>
+sh setup.sh</p>
+<p>0×6 启动 xunsearch</p>
+<p>cd /usr/local/xunsearch<br>
+bin/xs-ctl.sh restart</p>
+<p>0×7 开机启动 xunsearch</p>
+<p>echo '/usr/local/xunsearch/bin/ &amp;&amp; ./xs-ctl.sh -b inet start' &gt;&gt; /etc/rc.d/rc.local</p>
+<p>0×8 安装中文搜索插件</p>
+<p>cd /www/wwwroot/bbs.cltserver.xyz<br>
+composer require jjandxa/flarum-ext-chinese-search</p>
+<p>0×9 开启插件后，测试结果</p>
+<p>./vendor/bin/xs search -p ./vendor/jjandxa/flarum-ext-chinese-search/app.ini -q 关键词</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Flarum 插件推荐]]></title>
+        <id>https://pufengyixia.github.io/post/flarum-cha-jian-tui-jian/</id>
+        <link href="https://pufengyixia.github.io/post/flarum-cha-jian-tui-jian/">
+        </link>
+        <updated>2020-05-16T18:13:27.000Z</updated>
+        <content type="html"><![CDATA[<p>大多数作者会在https://flagrow.io/extensions/ 官网发布插件，你可以复制下面你喜欢的插接件名在https://flagrow.io/extensions/ 官网搜索插件，插件详细页都有该插件的composer安装命令</p>
+<p>0️⃣ 原生插件</p>
+<ol>
+<li>Approval</li>
+</ol>
+<p>审核。设置哪些用户组可以不经审核，直接发布主题、回复。</p>
+<ol start="2">
+<li>BBCode</li>
+</ol>
+<p>BB代码。Flarum 基本标记语言。</p>
+<ol start="3">
+<li>Emoji</li>
+</ol>
+<p>Emoji 表情。Flarum 原生 Emoji 选择器。是使用其他 Emoji 选择器的必要项。</p>
+<ol start="4">
+<li>Flags</li>
+</ol>
+<p>举报。允许举报帖子。是使用敏感词过滤器插件的前提。</p>
+<ol start="5">
+<li>Likes</li>
+</ol>
+<p>点赞。点赞功能。</p>
+<ol start="6">
+<li>Lock</li>
+</ol>
+<p>锁定。锁定主题，无法回复。</p>
+<p>7.Markdown</p>
+<p>基本 Markdown 语言支持。</p>
+<p>8.Mentions</p>
+<p>@功能。</p>
+<ol start="9">
+<li>Pusher</li>
+</ol>
+<p>Web 推送。Flarum 原生插件，实时推送并显示新主题、新回复。是使用实时聊天插件的前提。</p>
+<ol start="10">
+<li>Statistics</li>
+</ol>
+<p>统计表。在仪表盘中添加论坛统计图表。Flarum 原生插件，无需另外下载。</p>
+<ol start="11">
+<li>Sticky</li>
+</ol>
+<p>置顶帖子。</p>
+<ol start="12">
+<li>Subscriptions</li>
+</ol>
+<p>订阅帖子。当订阅的帖子有新回复时通知用户。</p>
+<ol start="13">
+<li>Suspend</li>
+</ol>
+<p>关闭讨论。开启后，无法回复相关主题。</p>
+<ol start="14">
+<li>Tags</li>
+</ol>
+<p>节点标签。开启后，可以新建论坛节点或标签。</p>
+<p>1️⃣ 后台功能类</p>
+<ul>
+<li>ACG Embed</li>
+</ul>
+<p>嵌入 Bilibili 、AcFun 的视频</p>
+<ol>
+<li>Analytics</li>
+</ol>
+<p>给论坛加入谷歌统计 和 Piwik 统计 服务。</p>
+<ol start="2">
+<li>Author Change</li>
+</ol>
+<p>允许版主或管理员变更主题、帖子的作者（发布者）。</p>
+<ol start="3">
+<li>Bazaar</li>
+</ol>
+<p>巴扎插件市场，在论坛后台添加一个面板，允许站长不通过 composer 命令来安装、卸载插件。</p>
+<ol start="4">
+<li>Dashboard</li>
+</ol>
+<p>在论坛后台，将 Flarum 原生的插件页面整合进“概览”页面，并添加一个表格，统计会员数、主题数、回复数。</p>
+<ol start="5">
+<li>Doorman</li>
+</ol>
+<p>看门人。邀请码机制。拥有邀请码才可以注册论坛。</p>
+<ol start="6">
+<li>Flagrow Direct Links</li>
+</ol>
+<p>主要功能：可以通过 URL 链接 打开“登陆”“注册”“文本编辑器”界面。</p>
+<ol start="7">
+<li>Flagrow Sitemap</li>
+</ol>
+<p>生成论坛的站点地图。</p>
+<ol start="8">
+<li>FoF Default User Preferences</li>
+</ol>
+<p>启用后，新用户注册完成时，自动开启他的“有人回复了我”“有人@我”时发送邮件的通知。</p>
+<ol start="9">
+<li>FoF Filter</li>
+</ol>
+<p>敏感词过滤器。发帖时检测帖子内是否存在敏感词、违规词。若有，暂时隐藏该贴，管理员审核通过后才会公开显示。</p>
+<ol start="10">
+<li>FoF Formatting</li>
+</ol>
+<p>自动识别图片、视频等链接，转换为易于阅读的嵌入式内容。</p>
+<ol start="11">
+<li>FoF Linguist</li>
+</ol>
+<p>自定义翻译论坛的各个元素。在论坛后台增加“翻译”页面，在其中可以搜索论坛中的元素，修改它们在不同语言下的翻译。</p>
+<ol start="12">
+<li>FoF Pages</li>
+</ol>
+<p>自定义 HTML 页面，可以配合 FoF Links 插件使用。</p>
+<ol start="13">
+<li>FoF Pretty Mail</li>
+</ol>
+<p>自定义邮件模板。允许站长在论坛后台修改三种邮件样式。</p>
+<ol start="14">
+<li>FoF Prevent Necrobumping</li>
+</ol>
+<p>防止挖坟。当一个主题长达 n 天没有被回复，则在有人想要回复此主题时，提醒用户“这个主题已经很久没人讨论了，确定要回复吗？”。</p>
+<ol start="15">
+<li>FoF Spamblock</li>
+</ol>
+<p>标记垃圾用户。</p>
+<ol start="16">
+<li>FoF Subscribed</li>
+</ol>
+<p>给管理员增加两个通知选项。分别是“当有人发布了新主题”“当有新用户注册”。</p>
+<ol start="17">
+<li>PWA</li>
+</ol>
+<p>渐进式 Web 应用。允许用户将网页以 APP 的形式安装到桌面。支持所有支持 PWA 的浏览器（不限平台）</p>
+<ol start="18">
+<li>SEO</li>
+</ol>
+<p>搜索引擎优化。</p>
+<ol start="19">
+<li>Web Push Notification</li>
+</ol>
+<p>OneSignal Web 通知推送。</p>
+<p>2️⃣ 前台论坛功能类</p>
+<ol>
+<li>Announce</li>
+</ol>
+<p>在论坛网页顶部，或左侧空白处添加一个“扩音器”公告按钮，用户点击这个按钮，会展示站长自定义的文本通知内容。</p>
+<ol start="2">
+<li>Back to Top</li>
+</ol>
+<p>在论坛右下角添加一个“返回顶部”的按钮，按钮位置、大小自适应屏幕。</p>
+<ol start="3">
+<li>Close （有bug，别用）</li>
+</ol>
+<p>允许版主或管理员关闭某个主题，并且该主题内所有帖子除发布者外，任何人都无法查看。</p>
+<ol start="4">
+<li>Color Circles</li>
+</ol>
+<p>如果一个用户加入了一个用户组，则在该用户的头像外围增加一圈与其用户组颜色相同的描边。</p>
+<ol start="5">
+<li>Rainbow Comic Sans</li>
+</ol>
+<p>添加动态彩虹色文字。</p>
+<ol start="6">
+<li>Diff</li>
+</ol>
+<p>编辑记录功能，开启后，可以查看每个帖子的编辑记录（每次编辑都有哪些地方有修改）。</p>
+<ol start="7">
+<li>Discussion views</li>
+</ol>
+<p>主题浏览记录。一是在首页信息流中，每个主题标题右边显示这个主题被浏览了多少次。</p>
+<p>二是在每个主题中，添加一个列表，展示有哪些人浏览了主题。</p>
+<ol start="8">
+<li>Emoji Picker</li>
+</ol>
+<p>Emoji 选择器。需要原生选择器支持。拥有更多功能的 Emoji 表情选择器，可以替换掉文本编辑器中 Flarum 原生的 Emoji 表情按钮。</p>
+<ol start="9">
+<li>FancyBox</li>
+</ol>
+<p>可以放大、平移帖子中的图片，另外也增加了几个不痛不痒的图片排版。</p>
+<ol start="10">
+<li>Flagrow Ads</li>
+</ol>
+<p>在论坛三个地方添加广告位，分别是首页左侧侧边栏、首页页眉、帖子中的每个楼层之间。</p>
+<ol start="11">
+<li>FoF Best Answer</li>
+</ol>
+<p>类似于百度知道的“被采纳答案”功能，允许每个主题的发布者在所有回复中选择一个“最佳回复”。</p>
+<ol start="12">
+<li>FoF Byōbu</li>
+</ol>
+<p>私密主题，只有选定的人才能查看、参与讨论。</p>
+<ol start="13">
+<li>FoF Drafts</li>
+</ol>
+<p>草稿功能，发布、回复帖子时，可以将内容暂存至草稿箱。不用担心不小心关掉网页后码的字丢失。</p>
+<ol start="14">
+<li>FoF Follow Tags</li>
+</ol>
+<p>允许用户订阅标签，当标签下有新主题或回复时，通知用户。</p>
+<ol start="15">
+<li>FoF Forum Statistics Widget</li>
+</ol>
+<p>在论坛首页左侧侧边栏展示论坛统计信息：主题数、用户数、回复数等。</p>
+<ol start="16">
+<li>FoF Gamification</li>
+</ol>
+<p>替换点赞按钮，增加投票功能，可以给帖子点击“踩”。在主页添加点赞排名页面等。帖子页截图 ，排名页截图</p>
+<ol start="17">
+<li>FoF GeoIP</li>
+</ol>
+<p>记录每个帖子发帖时的 ip 地址。</p>
+<ol start="18">
+<li>FoF Links</li>
+</ol>
+<p>在论坛左上角 LOGO 右边添加自定义链接。</p>
+<ol start="19">
+<li>FoF Merge Discussions</li>
+</ol>
+<p>允许将一个主题合并到另一个主题。</p>
+<ol start="20">
+<li>FoF Night Mode</li>
+</ol>
+<p>在论坛右上角用户菜单栏中添加“夜间模式/日间模式”的切换按钮。</p>
+<ol start="21">
+<li>FoF Polls</li>
+</ol>
+<p>可以在发布主题时增加投票。</p>
+<ol start="22">
+<li>FoF Profile Image Crop</li>
+</ol>
+<p>上传头像时，增加裁剪功能。</p>
+<ol start="23">
+<li>FoF Reactions</li>
+</ol>
+<p>戳表情。在点赞按钮左侧添加表情按钮，用户可以选择一个表情，表达看到该帖子的心情。</p>
+<ol start="24">
+<li>FoF Share Social</li>
+</ol>
+<p>分享按钮。在主题页面中，添加分享按钮。</p>
+<p>.FoF Social Profile</p>
+<p>允许用户在资料卡片上添加社交媒体按钮。</p>
+<ol start="25">
+<li>FoF Split</li>
+</ol>
+<p>拆分帖子。可以将一个主题内多个帖子拆分出来，组成一个新主题。</p>
+<ol start="26">
+<li>FoF Terms</li>
+</ol>
+<p>添加用户条款。在注册窗口中，添加条款选项。</p>
+<ol start="27">
+<li>FoF Upload</li>
+</ol>
+<p>允许用户上传图片、视频、文件等。</p>
+<ol start="28">
+<li>FoF User Bio</li>
+</ol>
+<p>个性签名。</p>
+<ol start="29">
+<li>FoF User Directory</li>
+</ol>
+<p>论坛用户名单。在主页添加一个页面，列出论坛所有的注册用户。</p>
+<ol start="30">
+<li>FoF Username Request</li>
+</ol>
+<p>允许用户申请修改用户名。</p>
+<ol start="31">
+<li>FoF reCAPTCHA</li>
+</ol>
+<p>在注册窗口中，加入谷歌验证码。和“用户条款”插件配合使用，可以特别有效的防止恶意注册。</p>
+<ol start="32">
+<li>Link Decisions</li>
+</ol>
+<p>外链打开方式。当用户单击论坛中的外链时，弹出窗口提示用户选择“在当前页面打开链接”或“在新标签页中打开链接”。</p>
+<ol start="33">
+<li>Mailing</li>
+</ol>
+<p>邮件群发功能。</p>
+<ol start="34">
+<li>Money</li>
+</ol>
+<p>用户资产。发帖、回复时可获得一定的论坛金钱奖励。</p>
+<ol start="35">
+<li>Online Users</li>
+</ol>
+<p>在线用户。在侧边栏显示当前在线的用户。</p>
+<ol start="36">
+<li>Password Strength Indicator</li>
+</ol>
+<p>密码强度检测。在用户注册时提示密码的强度。</p>
+<ol start="37">
+<li>Post Date</li>
+</ol>
+<p>发布日期修改。修改帖子的发布、编辑日期。</p>
+<ol start="38">
+<li>Profile views</li>
+</ol>
+<p>最近访客。在用户资料卡中显示其访客数量、在用户主页显示最近的访客具体有那些人。</p>
+<ol start="39">
+<li>ReFlar Cookie Consent</li>
+</ol>
+<p>Cookie 同意横幅。</p>
+<ol start="40">
+<li>ReFlar Level Ranks</li>
+</ol>
+<p>经验条。增加等级经验条，发帖、回复可获得经验。</p>
+<ol start="41">
+<li>Realtime Chat</li>
+</ol>
+<p>在线聊天室。需要开启 Pusher 插件使用。</p>
+<ol start="42">
+<li>Show Last Posts</li>
+</ol>
+<p>显示最新回复。在论坛首页的信息流中，每个主题都展示出最新回复，字数自定。</p>
+<ol start="43">
+<li>Show Password</li>
+</ol>
+<p>显示密码。注册或登陆时，可以选择显示密码。</p>
+<ol start="44">
+<li>Sign Up Button</li>
+</ol>
+<p>注册按钮。未登录时，将首页发布主题按钮替换为注册按钮。</p>
+<ol start="45">
+<li>Status</li>
+</ol>
+<p>用户心情。在个性签名下面添加一行描写自定义心情。</p>
+<p>3️⃣ BBCode 文本功能类</p>
+<ol>
+<li>BBCode Alerts &amp; Notifications</li>
+</ol>
+<p>允许在帖子中插入 提示框、警告框等自定义文本框。效果</p>
+<ol start="2">
+<li>BBCode FA</li>
+</ol>
+<p>允许在帖子中插入 FontAwesome 图标。</p>
+<ol start="3">
+<li>FoF BBCode Tabs</li>
+</ol>
+<p>允许在帖子中插入类似于标签选项卡的表单。截图</p>
+<ol start="4">
+<li>BBBBcode</li>
+</ol>
+<p>大美BBCode。增加大量 BBCode 文本样式。</p>
+<ol start="5">
+<li>Login 2 See</li>
+</ol>
+<p>登录后可见。用户登陆后才可以看见相关内容。</p>
+<ol start="6">
+<li>Reply 2 See</li>
+</ol>
+<p>回复后可见。用户回复后才可以看见相关内容。</p>
+<p>4️⃣ 第三方登录类</p>
+<ol>
+<li>FoF Discord Login</li>
+</ol>
+<p>Discord 登录。允许用户通过 Discord 账号登录。</p>
+<ol start="2">
+<li>GitHub Login</li>
+</ol>
+<p>GitHub 登录。Flarum 原生插件，无需另外安装。</p>
+<ol start="3">
+<li>Google Login</li>
+</ol>
+<p>谷歌登录。允许用户通过谷歌账号登录。</p>
+<ol start="4">
+<li>WeChat Login</li>
+</ol>
+<p>微信登录。允许用户通过微信账号登录。</p>
+<ol start="5">
+<li>Steam Login</li>
+</ol>
+<p>Steam 登录。允许用户通过 Steam 账号登录。</p>
+<p>5️⃣ 主题外观类</p>
+<ol>
+<li>Stargazing Theme</li>
+</ol>
+<p>观星主题。</p>
+<p>6️⃣ 语言包类</p>
+<ol>
+<li>简体中文 by Golden</li>
+</ol>
+<p>littlegolden/flarum-lang-simplified-chinese</p>
+<ol start="2">
+<li>繁体中文 by Csineneo</li>
+</ol>
+<p>csineneo/lang-traditional-chinese</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Centos 7安装与配置Flarum]]></title>
+        <id>https://pufengyixia.github.io/post/centos-7-an-zhuang-yu-pei-zhi-flarum/</id>
+        <link href="https://pufengyixia.github.io/post/centos-7-an-zhuang-yu-pei-zhi-flarum/">
+        </link>
+        <updated>2020-05-16T17:15:33.000Z</updated>
+        <content type="html"><![CDATA[<pre><code>Flarum 是一款非常棒的开源论坛程序，Halo 的论坛 就是用 Flarum 搭建的。之前有人问过我 Flarum 如何搭建，所以下面讲一下 Flarum 的搭建过程（btw，官方的搭建教程实在草率）。
+</code></pre>
+<p>前提</p>
+<pre><code>域名需要提前解析。
+注意服务器是否需要备案，如果没备案，会被 x 掉。
+有一定的 Linux 基础。
+</code></pre>
+<p>环境说明</p>
+<pre><code>Linux Server（本文是用的 CentOS 7.7）
+Apache 或者 Nginx（本文是用的 Nginx）
+PHP 7.3+
+PHP 拓展： curl, dom, gd, json, mbstring, openssl, pdo_mysql, tokenizer, zip, fileinfo
+MySQL 5.7+ 
+</code></pre>
+<p>部署环境安装<br>
+更新服务器软件包</p>
+<p>yum update -y</p>
+<p>安装 Nginx/PHP/MySQL</p>
+<pre><code>这里我们使用 OneinStack 一键安装，人生苦短，懒得自己编译了（绝不是因为我不会🌚）。当然，如果有时间，自己编译安装更好。
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://cdn.ryanc.cc/img/blog/thumbnails/38771f8f695f99bd0539db42af0f2e69.png" alt="OneInStack" loading="lazy"></figure>
+<p>如上图，选择好需要的软件以及版本后，复制自动安装命令到服务器执行就行了，安装过程可能会有点慢，耐心等待就行了。</p>
+<p>wget -c http://mirrors.linuxeye.com/oneinstack-full.tar.gz &amp;&amp; tar xzf oneinstack-full.tar.gz &amp;&amp; ./oneinstack/install.sh --nginx_option 1 --php_option 8 --phpcache_option 1 --php_extensions fileinfo --phpmyadmin  --db_option 2 --dbinstallmethod 1 --dbrootpwd oneinstack --pureftpd  --redis  --memcached  --reboot</p>
+<pre><code>需要注意的是，PHP 扩展中的 fileinfo 一定要勾选，Flarum 官方文档居然没有写需要这个扩展。(没错，这里我被坑了，嘤嘤嘤嘤~)
+</code></pre>
+<p>安装完成应该会打印出这些东西：</p>
+<figure data-type="image" tabindex="2"><img src="https://cdn.ryanc.cc/img/blog/thumbnails/6902ec905fc810f533910402cbd43662.png" alt="Oneinstack-success" loading="lazy"></figure>
+<p>安装 Composer</p>
+<p>php -r &quot;copy('https://install.phpcomposer.com/installer', 'composer-setup.php');&quot;</p>
+<p>php composer-setup.php</p>
+<p>php -r &quot;unlink('composer-setup.php');&quot;</p>
+<p>mv composer.phar /usr/local/bin/composer</p>
+<p>由于 Composer 的服务器在国外，可能导致下载 Flarum 已经依赖包会很慢，所以我们需要更换一下源地址。至于 Composer 是啥，其实就是 PHP 的一个包管理，类似 Java 的 Maven 和 Gradle 工具。</p>
+<p>composer config -g repo.packagist composer https://packagist.phpcomposer.com</p>
+<p>安装 Flarum</p>
+<p>进入到 oneinstack 目录，执行 vhost.sh 脚本新建一个网站<br>
+<img src="https://cdn.ryanc.cc/img/blog/thumbnails/c608cda88c610ae302e895bf723e3515.png" alt="OneInStack-vhost" loading="lazy"></p>
+<p>然后会提示 SSL 证书选项，网站目录之类的东西，按照自己的需求选择即可。</p>
+<p>创建完成后应该是这样子。<br>
+<img src="https://cdn.ryanc.cc/img/blog/thumbnails/56c950fe8a52e135b217e75026d48de8.png" alt="OneInStack-new-site" loading="lazy"></p>
+<p>然后进入网站目录执行：</p>
+<p>cd /data/wwwroot/bbs.ryanwang.me</p>
+<p>composer create-project flarum/flarum . --stability=beta</p>
+<p>然后等待下载 Flarum 以及对应的依赖即可，安装完成应该是这个样子的：<br>
+<img src="https://cdn.ryanc.cc/img/blog/thumbnails/34286be66336e95f86ff2f59349cfa70.png" alt="Flarum-install-success" loading="lazy"></p>
+<p>配置运行</p>
+<p>上面其实就已经安装好了 Flarum，但是还需要进一步配置才能正确运行。<br>
+创建数据库</p>
+<p>登陆 MySQL：</p>
+<p>mysql -u root -p密码flarum</p>
+<p>创建数据库：</p>
+<p>create database flarum character set utf8mb4 collate utf8mb4_bin;</p>
+<pre><code>这里的字符集一定要是 utf8mb4，至于为什么是 utf8mb4，参考：https://www.jianshu.com/p/6967ce16a202。也可以进数据库后台创建数据库，比如在谷歌浏览器输入http://188.88.88.88/phpMyAdmin ，用户名一般是root，密码是前面在我们使用OneinStack一键安装时填入的数据库密码oneinstack。创建数据库flarum，数据库字符集为utf8mb4。
+</code></pre>
+<p>修改 Nginx 配置</p>
+<p>进入 Nginx 配置文件目录：</p>
+<p>cd /usr/local/nginx/conf/vhost</p>
+<p>修改网站的配置文件：</p>
+<p>nano nginx.conf</p>
+<p>需要修改的地方：</p>
+<pre><code>root：需要在路径后面加上 public，比如我的原本是 root /data/wwwroot/bbs.ryanwang.me;，需要修改为 root /data/wwwroot/bbs.ryanwang.me/public;。
+引入 Flarum 提供的配置，在nginx.conf配置文件末尾 server }大括号}中任意位置加上 include /data/wwwroot/bbs.ryanwang.me/.nginx.conf;，bbs.ryanwang.me 为网站目录名。
+比如我的是  } include /data/wwwroot/bbs.ryanwang.me/.nginx.conf;}
+</code></pre>
+<p>最后的配置示例：</p>
+<p>server {<br>
+listen 80;<br>
+listen 443 ssl http2;<br>
+ssl_certificate /usr/local/nginx/conf/ssl/bbs.ryanwang.me.crt;<br>
+ssl_certificate_key /usr/local/nginx/conf/ssl/bbs.ryanwang.me.key;<br>
+ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;<br>
+ssl_ciphers TLS13-AES-256-GCM-SHA384:TLS13-CHACHA20-POLY1305-SHA256:TLS13-AES-128-GCM-SHA256:TLS13-AES-128-CCM-8-SHA256:TLS13-AES-128-CCM-SHA256:EECDH+CHACHA20:EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;<br>
+ssl_prefer_server_ciphers on;<br>
+ssl_session_timeout 10m;<br>
+ssl_session_cache builtin:1000 shared:SSL:10m;<br>
+ssl_buffer_size 1400;<br>
+add_header Strict-Transport-Security max-age=15768000;<br>
+ssl_stapling on;<br>
+ssl_stapling_verify on;<br>
+server_name bbs.ryanwang.me;<br>
+access_log /data/wwwlogs/bbs.ryanwang.me_nginx.log combined;<br>
+index index.html index.htm index.php;<br>
+root /data/wwwroot/bbs.ryanwang.me/public;<br>
+if (<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;}&#039;, got &#039;EOF&#039; at end of input: …rn 301 https://'>ssl_protocol = &quot;&quot;) { return 301 https://</span>host$request_uri; }</p>
+<p>include /usr/local/nginx/conf/rewrite/other.conf;<br>
+#error_page 404 /404.html;<br>
+#error_page 502 /502.html;</p>
+<p>location ~ [^/].php(/|$) {<br>
+#fastcgi_pass remote_php_ip:9000;<br>
+fastcgi_pass unix:/dev/shm/php-cgi.sock;<br>
+fastcgi_index index.php;<br>
+include fastcgi.conf;<br>
+}</p>
+<p>location ~ .<em>.(gif|jpg|jpeg|png|bmp|swf|flv|mp4|ico)$ {<br>
+expires 30d;<br>
+access_log off;<br>
+}<br>
+location ~ .</em>.(js|css)?$ {<br>
+expires 7d;<br>
+access_log off;<br>
+}<br>
+location ~ /(.user.ini|.ht|.git|.svn|.project|LICENSE|README.md) {<br>
+deny all;<br>
+}</p>
+<p>include /data/wwwroot/bbs.ryanwang.me/.nginx.conf;</p>
+<p>}</p>
+<p>最后我们需要检查 Nginx 配置是否有误并重载 Nginx 配置：</p>
+<p>nginx -t</p>
+<p>nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok</p>
+<p>nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful</p>
+<p>nginx -s reload</p>
+<p>Flarum 安装引导</p>
+<p>如果出现下面的情况：<br>
+<img src="https://cdn.ryanc.cc/img/blog/thumbnails/7243e69819dd45fe52789c07ad88351f.png" alt="Flarum-install-page-1" loading="lazy"></p>
+<p>是因为没有对网站目录/data/wwwroot/bbs.ryanwang.me写入的权限，我们加一下权限即可：</p>
+<h1 id="datawwwrootbbsryanwangme为网站目录名称">/data/wwwroot/bbs.ryanwang.me为网站目录名称</h1>
+<p>chmod -R 775 /data/wwwroot/bbs.ryanwang.me</p>
+<p>然后刷新页面就可以看到安装表单了。<br>
+<img src="https://cdn.ryanc.cc/img/blog/thumbnails/6aa3c74ae3c3e54f7579b9ad34884dd8.png" alt="Flarum-install-page-2" loading="lazy"></p>
+<p>然后填写数据库信息以及管理员信息，点击安装即可。这里填数据库名的时候要注意一下，<br>
+一般数据库名填root，数据库用户名才是前面你填的flarum。<br>
+<img src="https://www.itnt.xyz/wp-content/uploads/2019/12/Snipaste_2019-12-12_16-02-05-807x1024.jpg" alt="Flarum-install-Mysql" loading="lazy"></p>
+<p>安装部署部分到此结束。</p>
+<p>常用插件安装</p>
+<pre><code>安装完成后会发现不支持中文，所以我们需要安装中文语言包。还有一些常用的插件。更多插件推荐，请前往此处https://bbs.csur.fun/d/84-flarum 查看。
+建议每次装完插件后，运行一次清理缓存命令 php flarum cache:clear
+
+#　/data/wwwroot/bbs.ryanwang.me为网站目录名称，因为安装插件需在 Flarum 根目录执行。
+
+cd /data/wwwroot/bbs.ryanwang.me
+</code></pre>
+<p>#　简体中文语言包</p>
+<pre><code>composer require littlegolden/flarum-lang-simplified-chinese
+</code></pre>
+<p>#　繁体中文语言包</p>
+<pre><code>composer require csineneo/lang-traditional-chinese
+</code></pre>
+<p>#　编辑器 Emoji 表情选择框</p>
+<pre><code>composer require clarkwinkelmann/flarum-ext-emojionearea
+</code></pre>
+<p>#　导航栏菜单插件</p>
+<pre><code>composer require fof/links
+</code></pre>
+<p>#　最佳回答</p>
+<pre><code>composer require wiwatsrt/flarum-ext-best-answer
+</code></pre>
+<p>#　显示帖子阅读次数</p>
+<pre><code>composer require michaelbelgium/flarum-discussion-views
+</code></pre>
+<p>#　论坛用户列表</p>
+<pre><code>composer require avatar4eg/flarum-ext-users-list
+</code></pre>
+<p>#　生成静态页面</p>
+<pre><code>composer require fof/pages
+</code></pre>
+<p>#　在帖子中直接生成外链预览小图（此插件已标记为弃用，请勿再安装）</p>
+<pre><code>composer require zerosonesfun/flarum-ext-link-previews
+</code></pre>
+<p>#　上传文件</p>
+<pre><code>composer require fof/upload
+</code></pre>
+<p>#　插件商店</p>
+<pre><code>composer require extiverse/bazaar
+</code></pre>
+<p>#　Sitemap 生成器</p>
+<pre><code>composer require flagrow/sitemap
+</code></pre>
+<p>#　Fancybox 插件</p>
+<pre><code>composer require squeevee/flarum-ext-fancybox
+</code></pre>
+<p>安装完成后去后台启用即可（后台地址：网址/admin）<br>
+<img src="https://cdn.ryanc.cc/img/blog/thumbnails/168c9ee1aecd24300d8bdeb92755770b.png" alt="Flarum-extension" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[如何在CentOS 7上添加Swap 交换空间]]></title>
+        <id>https://pufengyixia.github.io/post/ru-he-zai-centos-7-shang-tian-jia-swap-jiao-huan-kong-jian/</id>
+        <link href="https://pufengyixia.github.io/post/ru-he-zai-centos-7-shang-tian-jia-swap-jiao-huan-kong-jian/">
+        </link>
+        <updated>2020-05-16T17:11:02.000Z</updated>
+        <content type="html"><![CDATA[<p>介绍</p>
+<p>增加服务器交换空间是提高服务器响应速度和防止应用程序内存不足错误的最简单方法之一。交换是存储驱动器上的一个区域，操作系统可以在其中临时存储无法再保存在内存中的数据。</p>
+<p>需要注意的是，这使您能够增加服务器可以在其工作内存中保留的信息量。读取和写入交换要比使用内存慢，但是当服务器内存不足时，它可以提供良好的安全性。</p>
+<p>如果不进行交换，则内存不足的服务器可能会开始杀死应用程序以释放内存，甚至崩溃。这可能会导致您丢失未保存的数据或遭受停机。为了确保可靠的数据访问，某些应用程序需要交换功能。</p>
+<p>在本指南中，我们将介绍如何在CentOS 7服务器上创建和启用交换文件。<br>
+注意</p>
+<p>尽管通常建议对使用传统旋转硬盘驱动器的系统进行交换，但是与SSD一起使用交换可能会导致硬件随时间推移而出现问题。基于此考虑，我们不建议在DigitalOcean或任何其他使用SSD存储的提供商上启用交换。这样做可能会影响您和您的邻居的基础硬件的可靠性。</p>
+<p>如果需要提高服务器的性能，建议升级您的Droplet。通常，这将导致更好的结果，并减少导致可能影响服务的硬件问题的可能性。<br>
+先决条件</p>
+<p>在开始使用本指南之前，首先需要完成一些步骤。</p>
+<p>您将需要安装并配置具有sudo特权的非root用户的CentOS 7服务器。如果尚未执行此操作，则可以执行CentOS 7初始服务器设置指南中的步骤1-4 来创建此帐户。</p>
+<p>一旦拥有非root用户，就可以使用它来SSH到CentOS服务器中，并继续安装交换文件。<br>
+检查系统以获取交换信息</p>
+<p>在开始之前，我们应该看一下服务器的存储空间，看是否已经有一些可用的交换空间。虽然我们可以有多个交换文件或交换分区，但是通常一个就足够了。</p>
+<p>我们可以使用swapon通用交换实用程序来查看系统是否具有任何已配置的交换。带有该-s标志，swapon将在我们的存储设备上显示交换使用情况和可用性的摘要：</p>
+<p>swapon -s</p>
+<p>如果命令未返回任何内容，则摘要为空，并且不存在交换文件。</p>
+<p>检查交换空间的另一种方法是使用free实用程序，它向我们显示了系统的整体内存使用情况。我们可以通过键入以下内容来查看当前的内存和交换使用情况（以兆字节为单位）：</p>
+<p>free -m</p>
+<pre><code>         total       used       free     shared    buffers     cached
+</code></pre>
+<p>Mem:          3953        315       3637          8         11        107<br>
+-/+ buffers/cache:        196       3756<br>
+Swap:            0          0       4095</p>
+<p>如您所见，我们在系统中的总交换空间为0。这与我们看到的相符swapon。<br>
+检查可用的存储空间</p>
+<p>为交换分配空间的典型方法是使用专用于该任务的单独分区。但是，由于硬件或软件的限制，改变分区方案并非总是可能的。幸运的是，我们可以轻松地创建一个位于现有分区上的交换文件。</p>
+<p>在执行此操作之前，我们应该了解当前的驱动器使用情况。我们可以通过输入以下内容获取此信息：</p>
+<p>df -h</p>
+<p>Filesystem      Size  Used Avail Use% Mounted on<br>
+/dev/vda1        59G  1.5G   55G   3% /<br>
+devtmpfs        2.0G     0  2.0G   0% /dev<br>
+tmpfs           2.0G     0  2.0G   0% /dev/shm<br>
+tmpfs           2.0G  8.3M  2.0G   1% /run<br>
+tmpfs           2.0G     0  2.0G   0% /sys/fs/cgroup</p>
+<p>注意：该-h标志只是告诉您dh以易于阅读的格式输出驱动器信息。例如，不是输出分区中的原始内存块数，而是df -h以M（兆字节）或G（千兆字节）为单位告诉我们空间使用情况和可用性。</p>
+<p>如第一行所示，我们的存储分区有59 GB可用空间，因此我们有很大的空间可以使用。请记住，这是在一个新的中型VPS实例上，因此您的实际用法可能会有很大不同。</p>
+<p>尽管对于交换空间的适当大小有很多意见，但这实际上取决于您的应用程序要求和您的个人喜好。通常，等于或大于系统内存量的内存是一个不错的起点。</p>
+<p>由于我的系统具有4 GB的内存，而将其加倍将占用比我愿意分配的更大的存储空间，因此，我将创建4 GB的交换空间以匹配系统的内存。<br>
+创建交换文件</p>
+<p>既然我们知道了可用的存储空间，就可以在文件系统中创建交换文件了。我们将swapfile在根（/）目录中创建一个名为的文件，尽管您可以根据需要将其命名为其他名称。该文件必须为交换文件分配所需的空间量，并且应在一个连续的块中创建它。</p>
+<p>最好的方法是使用该dd实用程序。此命令将创建一个4 GB的文件：</p>
+<p>sudo dd if=/dev/zero of=/swapfile count=4096 bs=1MiB</p>
+<p>输入密码以授权sudo特权后，将创建交换文件。这可能需要一些时间，然后提示会返回给您。我们可以使用以下命令验证是否为交换保留了正确的空间量ls：</p>
+<p>ls -lh /swapfile</p>
+<p>-rw-r--r-- 1 root root 4.0G Oct 30 11:00 /swapfile</p>
+<p>如您所见，我们的交换文件是在预留了正确数量的空间的情况下创建的。<br>
+启用交换文件</p>
+<p>现在，我们的文件已创建，但是我们的系统不知道应该将其用于交换。我们需要告诉我们的系统将此文件格式化为交换文件，然后将其启用。</p>
+<p>在执行此操作之前，我们应该调整交换文件上的权限，以使除根帐户之外的任何人都无法读取该文件。允许其他用户读取或写入此文件将带来巨大的安全风险。我们可以使用以下命令锁定权限chmod：</p>
+<p>sudo chmod 600 /swapfile</p>
+<p>这将仅将读取和写入权限限制为对根帐户。我们可以通过ls -lh再次使用来验证交换文件是否具有正确的权限：</p>
+<p>ls -lh /swapfile</p>
+<p>-rw------- 1 root root 4.0G Oct 30 11:00 /swapfile</p>
+<p>现在我们的交换文件更安全了，我们可以通过输入以下内容来告诉我们的系统设置交换空间以供使用：</p>
+<p>sudo mkswap /swapfile</p>
+<p>Setting up swapspace version 1, size = 4194300 KiB<br>
+no label, UUID=b99230bb-21af-47bc-8c37-de41129c39bf</p>
+<p>现在，我们的交换文件已准备好用作交换空间。我们可以通过输入以下内容开始使用它：</p>
+<p>sudo swapon /swapfile</p>
+<p>为了验证该过程是否成功，我们可以检查系统现在是否报告交换空间：</p>
+<p>swapon -s</p>
+<p>Filename                Type        Size    Used    Priority<br>
+/swapfile               file        4194300 0     -1</p>
+<p>此输出确认我们有一个新的交换文件。我们可以free再次使用该实用工具来证实我们的发现：</p>
+<p>free -m</p>
+<pre><code>         total       used       free     shared    buffers     cached
+</code></pre>
+<p>Mem:          3953        315       3637          8         11        107<br>
+-/+ buffers/cache:        196       3756<br>
+Swap:         4095          0       4095</p>
+<p>我们的交换已成功建立，并且我们的操作系统将根据需要开始使用它。<br>
+使交换文件永久</p>
+<p>目前，我们的交换文件已启用，但是当我们重新启动时，服务器将不会自动启用该文件供使用。我们可以通过修改fstab文件来更改它，该文件是管理文件系统和分区的表。</p>
+<p>sudo在文本编辑器中使用特权编辑文件：</p>
+<p>sudo nano /etc/fstab</p>
+<p>在文件的底部，您需要添加一行以告知操作系统自动使用您创建的交换文件：</p>
+<p>/swapfile   swap    swap    sw  0   0</p>
+<p>完成添加行后，可以保存并关闭文件。服务器将在每次启动时检查此文件，因此从现在开始可以使用交换文件。<br>
+调整交换设置（可选）</p>
+<p>您可以配置一些选项，这些选项在处理交换时会影响系统的性能。这些配置在大多数情况下是可选的，您所做的更改将取决于您的应用程序需求和您的个人喜好。<br>
+轻浮</p>
+<p>该swappiness参数确定系统多久将内存中的数据交换到交换空间一次。这是一个介于0和100之间的值，代表将触发使用交换的内存使用百分比。</p>
+<p>值接近零时，除非绝对必要，否则系统不会将数据交换到驱动器。请记住，与交换文件的交互是“昂贵的”，因为它们比与内存的交互要慢得多，并且读写速度上的这种差异可能会导致应用程序性能的显着降低。告诉系统不要过多依赖交换，通常会使您的系统更快。</p>
+<p>接近100的值将尝试交换更多数据，以保持更多的可用内存。在某些情况下，这可能是更好的选择，具体取决于应用程序的内存配置文件或服务器的用途。</p>
+<p>通过读取swappiness配置文件，我们可以看到当前的swappiness值：</p>
+<p>cat /proc/sys/vm/swappiness</p>
+<p>30</p>
+<p>CentOS 7的默认可交换性设置为30，对于大多数台式机和本地服务器来说，这是一个合理的中间立场。对于VPS系统，我们可能希望将其移近0。</p>
+<p>我们可以使用以下sysctl命令将swappiness设置为其他值。例如，要将swappiness设置为10，我们可以输入：</p>
+<p>sudo sysctl vm.swappiness=10</p>
+<p>vm.swappiness = 10</p>
+<p>此设置将持续到下一次重新启动。为了使设置在两次重启之间保持不变，我们可以将输出行添加到我们的sysctl配置文件中：</p>
+<p>sudo nano /etc/sysctl.conf</p>
+<p>将您的swappiness设置添加到文件的底部：</p>
+<p>vm.swappiness = 10</p>
+<p>完成添加行后，可以保存并关闭文件。现在，服务器将自动将swappiness设置为您在每次启动时声明的值。<br>
+缓存压力</p>
+<p>您可能要修改的另一个相关值是vfs_cache_pressure。此设置影响特殊文件系统元数据条目的存储。不断读取和刷新此信息通常会非常昂贵，因此将其长时间存储在缓存中对于系统的性能而言非常出色。</p>
+<p>您可以通过proc再次查询文件系统来查看此缓存压力的当前值：</p>
+<p>cat /proc/sys/vm/vfs_cache_pressure</p>
+<p>100</p>
+<p>由于当前已配置，因此我们的系统太快地从缓存中删除了索引节点信息。我们可以使用以下命令将其设置为更保守的设置，例如50 sysctl：</p>
+<p>sudo sysctl vm.vfs_cache_pressure=50</p>
+<p>vm.vfs_cache_pressure = 50</p>
+<p>同样，这仅对我们当前的会话有效。我们可以通过将其添加到配置文件中来更改它，就像我们对swappiness设置所做的那样：</p>
+<p>sudo nano /etc/sysctl.conf</p>
+<p>在底部，添加用于指定新值的行：</p>
+<p>vm.vfs_cache_pressure = 50</p>
+<p>完成添加行后，可以保存并关闭文件。服务器现在将自动将缓存压力设置为您在每次启动时声明的值。<br>
+结论</p>
+<p>通过遵循本指南中的步骤，您将为服务器提供一些内存使用方面的喘息空间。交换空间对于避免一些常见问题非常有用。</p>
+<p>如果遇到OOM（内存不足）错误，或者发现系统无法使用所需的应用程序，则最佳解决方案是优化应用程序配置或升级服务器。但是，配置交换空间可以为您提供更大的灵活性，并可以帮助您在功能不那么强大的服务器上花费时间。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello Gridea]]></title>
+        <id>https://pufengyixia.github.io/post/hello-gridea/</id>
+        <link href="https://pufengyixia.github.io/post/hello-gridea/">
+        </link>
+        <updated>2018-12-11T16:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+<!-- more -->
+<p><a href="https://github.com/getgridea/gridea">Github</a><br>
+<a href="https://gridea.dev/">Gridea 主页</a><br>
+<a href="http://fehey.com/">示例网站</a></p>
+<h2 id="特性">特性👇</h2>
+<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
+<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
+<p>🏷️  你可以对文章进行标签分组</p>
+<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
+<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
+<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
+<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
+<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
+<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
+<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
+<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
+<p>未来，它一定会成为你离不开的伙伴</p>
+<p>尽情发挥你的才华吧！</p>
+<p>😘 Enjoy~</p>
+]]></content>
+    </entry>
+</feed>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>如何在CentOS 7上添加Swap 交换空间 | pufengyixia</title>
+<meta name="description" content="">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://pufengyixia.github.io/favicon.ico?v=1589681547859">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://pufengyixia.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://pufengyixia.github.io">pufengyixia</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>如何在CentOS 7上添加Swap 交换空间</h1>
+            <p class="article-meta">
+              2020-05-16
+              
+            </p>
+            
+            <div class="post-content">
+              <p>介绍</p>
+<p>增加服务器交换空间是提高服务器响应速度和防止应用程序内存不足错误的最简单方法之一。交换是存储驱动器上的一个区域，操作系统可以在其中临时存储无法再保存在内存中的数据。</p>
+<p>需要注意的是，这使您能够增加服务器可以在其工作内存中保留的信息量。读取和写入交换要比使用内存慢，但是当服务器内存不足时，它可以提供良好的安全性。</p>
+<p>如果不进行交换，则内存不足的服务器可能会开始杀死应用程序以释放内存，甚至崩溃。这可能会导致您丢失未保存的数据或遭受停机。为了确保可靠的数据访问，某些应用程序需要交换功能。</p>
+<p>在本指南中，我们将介绍如何在CentOS 7服务器上创建和启用交换文件。<br>
+注意</p>
+<p>尽管通常建议对使用传统旋转硬盘驱动器的系统进行交换，但是与SSD一起使用交换可能会导致硬件随时间推移而出现问题。基于此考虑，我们不建议在DigitalOcean或任何其他使用SSD存储的提供商上启用交换。这样做可能会影响您和您的邻居的基础硬件的可靠性。</p>
+<p>如果需要提高服务器的性能，建议升级您的Droplet。通常，这将导致更好的结果，并减少导致可能影响服务的硬件问题的可能性。<br>
+先决条件</p>
+<p>在开始使用本指南之前，首先需要完成一些步骤。</p>
+<p>您将需要安装并配置具有sudo特权的非root用户的CentOS 7服务器。如果尚未执行此操作，则可以执行CentOS 7初始服务器设置指南中的步骤1-4 来创建此帐户。</p>
+<p>一旦拥有非root用户，就可以使用它来SSH到CentOS服务器中，并继续安装交换文件。<br>
+检查系统以获取交换信息</p>
+<p>在开始之前，我们应该看一下服务器的存储空间，看是否已经有一些可用的交换空间。虽然我们可以有多个交换文件或交换分区，但是通常一个就足够了。</p>
+<p>我们可以使用swapon通用交换实用程序来查看系统是否具有任何已配置的交换。带有该-s标志，swapon将在我们的存储设备上显示交换使用情况和可用性的摘要：</p>
+<p>swapon -s</p>
+<p>如果命令未返回任何内容，则摘要为空，并且不存在交换文件。</p>
+<p>检查交换空间的另一种方法是使用free实用程序，它向我们显示了系统的整体内存使用情况。我们可以通过键入以下内容来查看当前的内存和交换使用情况（以兆字节为单位）：</p>
+<p>free -m</p>
+<pre><code>         total       used       free     shared    buffers     cached
+</code></pre>
+<p>Mem:          3953        315       3637          8         11        107<br>
+-/+ buffers/cache:        196       3756<br>
+Swap:            0          0       4095</p>
+<p>如您所见，我们在系统中的总交换空间为0。这与我们看到的相符swapon。<br>
+检查可用的存储空间</p>
+<p>为交换分配空间的典型方法是使用专用于该任务的单独分区。但是，由于硬件或软件的限制，改变分区方案并非总是可能的。幸运的是，我们可以轻松地创建一个位于现有分区上的交换文件。</p>
+<p>在执行此操作之前，我们应该了解当前的驱动器使用情况。我们可以通过输入以下内容获取此信息：</p>
+<p>df -h</p>
+<p>Filesystem      Size  Used Avail Use% Mounted on<br>
+/dev/vda1        59G  1.5G   55G   3% /<br>
+devtmpfs        2.0G     0  2.0G   0% /dev<br>
+tmpfs           2.0G     0  2.0G   0% /dev/shm<br>
+tmpfs           2.0G  8.3M  2.0G   1% /run<br>
+tmpfs           2.0G     0  2.0G   0% /sys/fs/cgroup</p>
+<p>注意：该-h标志只是告诉您dh以易于阅读的格式输出驱动器信息。例如，不是输出分区中的原始内存块数，而是df -h以M（兆字节）或G（千兆字节）为单位告诉我们空间使用情况和可用性。</p>
+<p>如第一行所示，我们的存储分区有59 GB可用空间，因此我们有很大的空间可以使用。请记住，这是在一个新的中型VPS实例上，因此您的实际用法可能会有很大不同。</p>
+<p>尽管对于交换空间的适当大小有很多意见，但这实际上取决于您的应用程序要求和您的个人喜好。通常，等于或大于系统内存量的内存是一个不错的起点。</p>
+<p>由于我的系统具有4 GB的内存，而将其加倍将占用比我愿意分配的更大的存储空间，因此，我将创建4 GB的交换空间以匹配系统的内存。<br>
+创建交换文件</p>
+<p>既然我们知道了可用的存储空间，就可以在文件系统中创建交换文件了。我们将swapfile在根（/）目录中创建一个名为的文件，尽管您可以根据需要将其命名为其他名称。该文件必须为交换文件分配所需的空间量，并且应在一个连续的块中创建它。</p>
+<p>最好的方法是使用该dd实用程序。此命令将创建一个4 GB的文件：</p>
+<p>sudo dd if=/dev/zero of=/swapfile count=4096 bs=1MiB</p>
+<p>输入密码以授权sudo特权后，将创建交换文件。这可能需要一些时间，然后提示会返回给您。我们可以使用以下命令验证是否为交换保留了正确的空间量ls：</p>
+<p>ls -lh /swapfile</p>
+<p>-rw-r--r-- 1 root root 4.0G Oct 30 11:00 /swapfile</p>
+<p>如您所见，我们的交换文件是在预留了正确数量的空间的情况下创建的。<br>
+启用交换文件</p>
+<p>现在，我们的文件已创建，但是我们的系统不知道应该将其用于交换。我们需要告诉我们的系统将此文件格式化为交换文件，然后将其启用。</p>
+<p>在执行此操作之前，我们应该调整交换文件上的权限，以使除根帐户之外的任何人都无法读取该文件。允许其他用户读取或写入此文件将带来巨大的安全风险。我们可以使用以下命令锁定权限chmod：</p>
+<p>sudo chmod 600 /swapfile</p>
+<p>这将仅将读取和写入权限限制为对根帐户。我们可以通过ls -lh再次使用来验证交换文件是否具有正确的权限：</p>
+<p>ls -lh /swapfile</p>
+<p>-rw------- 1 root root 4.0G Oct 30 11:00 /swapfile</p>
+<p>现在我们的交换文件更安全了，我们可以通过输入以下内容来告诉我们的系统设置交换空间以供使用：</p>
+<p>sudo mkswap /swapfile</p>
+<p>Setting up swapspace version 1, size = 4194300 KiB<br>
+no label, UUID=b99230bb-21af-47bc-8c37-de41129c39bf</p>
+<p>现在，我们的交换文件已准备好用作交换空间。我们可以通过输入以下内容开始使用它：</p>
+<p>sudo swapon /swapfile</p>
+<p>为了验证该过程是否成功，我们可以检查系统现在是否报告交换空间：</p>
+<p>swapon -s</p>
+<p>Filename                Type        Size    Used    Priority<br>
+/swapfile               file        4194300 0     -1</p>
+<p>此输出确认我们有一个新的交换文件。我们可以free再次使用该实用工具来证实我们的发现：</p>
+<p>free -m</p>
+<pre><code>         total       used       free     shared    buffers     cached
+</code></pre>
+<p>Mem:          3953        315       3637          8         11        107<br>
+-/+ buffers/cache:        196       3756<br>
+Swap:         4095          0       4095</p>
+<p>我们的交换已成功建立，并且我们的操作系统将根据需要开始使用它。<br>
+使交换文件永久</p>
+<p>目前，我们的交换文件已启用，但是当我们重新启动时，服务器将不会自动启用该文件供使用。我们可以通过修改fstab文件来更改它，该文件是管理文件系统和分区的表。</p>
+<p>sudo在文本编辑器中使用特权编辑文件：</p>
+<p>sudo nano /etc/fstab</p>
+<p>在文件的底部，您需要添加一行以告知操作系统自动使用您创建的交换文件：</p>
+<p>/swapfile   swap    swap    sw  0   0</p>
+<p>完成添加行后，可以保存并关闭文件。服务器将在每次启动时检查此文件，因此从现在开始可以使用交换文件。<br>
+调整交换设置（可选）</p>
+<p>您可以配置一些选项，这些选项在处理交换时会影响系统的性能。这些配置在大多数情况下是可选的，您所做的更改将取决于您的应用程序需求和您的个人喜好。<br>
+轻浮</p>
+<p>该swappiness参数确定系统多久将内存中的数据交换到交换空间一次。这是一个介于0和100之间的值，代表将触发使用交换的内存使用百分比。</p>
+<p>值接近零时，除非绝对必要，否则系统不会将数据交换到驱动器。请记住，与交换文件的交互是“昂贵的”，因为它们比与内存的交互要慢得多，并且读写速度上的这种差异可能会导致应用程序性能的显着降低。告诉系统不要过多依赖交换，通常会使您的系统更快。</p>
+<p>接近100的值将尝试交换更多数据，以保持更多的可用内存。在某些情况下，这可能是更好的选择，具体取决于应用程序的内存配置文件或服务器的用途。</p>
+<p>通过读取swappiness配置文件，我们可以看到当前的swappiness值：</p>
+<p>cat /proc/sys/vm/swappiness</p>
+<p>30</p>
+<p>CentOS 7的默认可交换性设置为30，对于大多数台式机和本地服务器来说，这是一个合理的中间立场。对于VPS系统，我们可能希望将其移近0。</p>
+<p>我们可以使用以下sysctl命令将swappiness设置为其他值。例如，要将swappiness设置为10，我们可以输入：</p>
+<p>sudo sysctl vm.swappiness=10</p>
+<p>vm.swappiness = 10</p>
+<p>此设置将持续到下一次重新启动。为了使设置在两次重启之间保持不变，我们可以将输出行添加到我们的sysctl配置文件中：</p>
+<p>sudo nano /etc/sysctl.conf</p>
+<p>将您的swappiness设置添加到文件的底部：</p>
+<p>vm.swappiness = 10</p>
+<p>完成添加行后，可以保存并关闭文件。现在，服务器将自动将swappiness设置为您在每次启动时声明的值。<br>
+缓存压力</p>
+<p>您可能要修改的另一个相关值是vfs_cache_pressure。此设置影响特殊文件系统元数据条目的存储。不断读取和刷新此信息通常会非常昂贵，因此将其长时间存储在缓存中对于系统的性能而言非常出色。</p>
+<p>您可以通过proc再次查询文件系统来查看此缓存压力的当前值：</p>
+<p>cat /proc/sys/vm/vfs_cache_pressure</p>
+<p>100</p>
+<p>由于当前已配置，因此我们的系统太快地从缓存中删除了索引节点信息。我们可以使用以下命令将其设置为更保守的设置，例如50 sysctl：</p>
+<p>sudo sysctl vm.vfs_cache_pressure=50</p>
+<p>vm.vfs_cache_pressure = 50</p>
+<p>同样，这仅对我们当前的会话有效。我们可以通过将其添加到配置文件中来更改它，就像我们对swappiness设置所做的那样：</p>
+<p>sudo nano /etc/sysctl.conf</p>
+<p>在底部，添加用于指定新值的行：</p>
+<p>vm.vfs_cache_pressure = 50</p>
+<p>完成添加行后，可以保存并关闭文件。服务器现在将自动将缓存压力设置为您在每次启动时声明的值。<br>
+结论</p>
+<p>通过遵循本指南中的步骤，您将为服务器提供一些内存使用方面的喘息空间。交换空间对于避免一些常见问题非常有用。</p>
+<p>如果遇到OOM（内存不足）错误，或者发现系统无法使用所需的应用程序，则最佳解决方案是优化应用程序配置或升级服务器。但是，配置交换空间可以为您提供更大的灵活性，并可以帮助您在功能不那么强大的服务器上花费时间。</p>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://pufengyixia.github.io/post/hello-gridea/">
+                <h3 class="post-title">
+                  Hello Gridea
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://pufengyixia.github.io/images/avatar.png?v=1589681547859" class="no-responsive avatar">
+    <div class="text-muted"></div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://pufengyixia.github.io/post/csur-zhan-dian-quan-ju-zi-ding-yi-css-yang-shi-fen-xiang/">CSUR站点全局自定义 CSS 样式分享</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://pufengyixia.github.io/post/centos-7-an-zhuang-flarum-zhong-wen-sou-suo-cha-jian/">CentOS 7 安装Flarum中文搜索插件</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://pufengyixia.github.io/post/flarum-cha-jian-tui-jian/">Flarum 插件推荐</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://pufengyixia.github.io/post/centos-7-an-zhuang-yu-pei-zhi-flarum/">Centos 7安装与配置Flarum</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://pufengyixia.github.io/post/ru-he-zai-centos-7-shang-tian-jia-swap-jiao-huan-kong-jian/">如何在CentOS 7上添加Swap 交换空间</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://pufengyixia.github.io/post/about/">关于</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://pufengyixia.github.io/post/hello-gridea/">Hello Gridea</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://pufengyixia.github.io/tag/s9-Akorr0/" class="badge secondary">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://pufengyixia.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
