@@ -2,27 +2,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://pufengyixia.github.io</id>
     <title>pufengyixia</title>
-    <updated>2020-05-17T02:24:30.733Z</updated>
+    <updated>2020-05-17T02:28:40.496Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://pufengyixia.github.io"/>
     <link rel="self" href="https://pufengyixia.github.io/atom.xml"/>
     <logo>https://pufengyixia.github.io/images/avatar.png</logo>
     <icon>https://pufengyixia.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, pufengyixia</rights>
-    <entry>
-        <title type="html"><![CDATA[Flarum 中文优化版]]></title>
-        <id>https://pufengyixia.github.io/post/flarum-zhong-wen-you-hua-ban/</id>
-        <link href="https://pufengyixia.github.io/post/flarum-zhong-wen-you-hua-ban/">
-        </link>
-        <updated>2020-05-16T19:18:53.000Z</updated>
-        <content type="html"><![CDATA[<p>FlarumChina版<br>
-https://gitee.com/FlarumChina/FlarumChina/releases</p>
-<p>Flarum 中文社区版<br>
-https://gitee.com/FlarumCN/Flarum/releases</p>
-<p>0xFFFF 社区版<br>
-https://github.com/0xffff-one/core/releases</p>
-]]></content>
-    </entry>
     <entry>
         <title type="html"><![CDATA[CentOS 7 安装Flarum中文搜索插件]]></title>
         <id>https://pufengyixia.github.io/post/centos-7-an-zhuang-flarum-zhong-wen-sou-suo-cha-jian/</id>
@@ -743,6 +729,20 @@ Swap:         4095          0       4095</p>
 结论</p>
 <p>通过遵循本指南中的步骤，您将为服务器提供一些内存使用方面的喘息空间。交换空间对于避免一些常见问题非常有用。</p>
 <p>如果遇到OOM（内存不足）错误，或者发现系统无法使用所需的应用程序，则最佳解决方案是优化应用程序配置或升级服务器。但是，配置交换空间可以为您提供更大的灵活性，并可以帮助您在功能不那么强大的服务器上花费时间。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Flarum 中文优化版]]></title>
+        <id>https://pufengyixia.github.io/post/flarum-zhong-wen-you-hua-ban/</id>
+        <link href="https://pufengyixia.github.io/post/flarum-zhong-wen-you-hua-ban/">
+        </link>
+        <updated>2020-05-16T12:18:53.000Z</updated>
+        <content type="html"><![CDATA[<p>FlarumChina版<br>
+<a href="https://gitee.com/FlarumChina/FlarumChina/releases">https://gitee.com/FlarumChina/FlarumChina/releases</a></p>
+<p>Flarum 中文社区版<br>
+<a href="https://gitee.com/FlarumCN/Flarum/releases">https://gitee.com/FlarumCN/Flarum/releases</a></p>
+<p>0xFFFF 社区版<br>
+<a href="https://github.com/0xffff-one/core/releases">https://github.com/0xffff-one/core/releases</a></p>
 ]]></content>
     </entry>
     <entry>
