@@ -2,13 +2,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://pufengyixia.github.io</id>
     <title>pufengyixia</title>
-    <updated>2020-05-17T02:15:43.288Z</updated>
+    <updated>2020-05-17T02:24:30.733Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://pufengyixia.github.io"/>
     <link rel="self" href="https://pufengyixia.github.io/atom.xml"/>
     <logo>https://pufengyixia.github.io/images/avatar.png</logo>
     <icon>https://pufengyixia.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, pufengyixia</rights>
+    <entry>
+        <title type="html"><![CDATA[Flarum 中文优化版]]></title>
+        <id>https://pufengyixia.github.io/post/flarum-zhong-wen-you-hua-ban/</id>
+        <link href="https://pufengyixia.github.io/post/flarum-zhong-wen-you-hua-ban/">
+        </link>
+        <updated>2020-05-16T19:18:53.000Z</updated>
+        <content type="html"><![CDATA[<p>FlarumChina版<br>
+https://gitee.com/FlarumChina/FlarumChina/releases</p>
+<p>Flarum 中文社区版<br>
+https://gitee.com/FlarumCN/Flarum/releases</p>
+<p>0xFFFF 社区版<br>
+https://github.com/0xffff-one/core/releases</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CentOS 7 安装Flarum中文搜索插件]]></title>
         <id>https://pufengyixia.github.io/post/centos-7-an-zhuang-flarum-zhong-wen-sou-suo-cha-jian/</id>
