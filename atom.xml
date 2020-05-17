@@ -2,198 +2,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://pufengyixia.github.io</id>
     <title>pufengyixia</title>
-    <updated>2020-05-17T02:12:30.788Z</updated>
+    <updated>2020-05-17T02:15:43.288Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://pufengyixia.github.io"/>
     <link rel="self" href="https://pufengyixia.github.io/atom.xml"/>
     <logo>https://pufengyixia.github.io/images/avatar.png</logo>
     <icon>https://pufengyixia.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, pufengyixia</rights>
-    <entry>
-        <title type="html"><![CDATA[CSUR站点全局自定义 CSS 样式分享]]></title>
-        <id>https://pufengyixia.github.io/post/csur-zhan-dian-quan-ju-zi-ding-yi-css-yang-shi-fen-xiang/</id>
-        <link href="https://pufengyixia.github.io/post/csur-zhan-dian-quan-ju-zi-ding-yi-css-yang-shi-fen-xiang/">
-        </link>
-        <updated>2020-05-16T18:47:12.000Z</updated>
-        <content type="html"><![CDATA[<p>选择两种颜色作为论坛主色调。第一种作为突出显示颜色#F18300，<br>
-第二种作为背景等元素的颜色#E7672E。<br>
-复制CSS 样式到后台管理-外观-自定义样式，然后启用彩色导航栏。</p>
-<pre><code class="language-/*">.UserDirectoryList-loadMore .Button,
-.DiscussionList-loadMore .Button {
-	 width: 50%;
-         border-radius: 30px;
-         margin-top: 30px;
-}
-.UserDirectoryList-loadMore {
-    text-align: center;
-}
-@media (max-width: 767px) {
-	.DiscussionList-loadMore {
-		padding-left: 15px;
-		padding-right: 15px;
-	}
-}
-
-/* 替换点赞, 回复按钮 */
-.item-like .Button--link .Button-label,
-.item-reply .Button--link .Button-label{
-    display: none;
-}
-.item-like .Button:before {
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 600;
-    font-size: 14px;
-    content: '\f164';
-    vertical-align: -1px;
-}
-.item-reply .Button--link:before {
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 600;
-    font-size: 15px;
-    content: '\f3e5';
-    margin-right: 4px;
-    vertical-align: -2px;
-}
-
-/* 首页主题点击量对齐 */
-@media (min-width: 768px){
-	.IndexPage li.item-discussion-views {
-		margin-right: -70px;
-		width: 55px;
-	}
-}
-
-/* 反应按钮位置 */
-.Post-actions .Reactions .Reactions--ShowReactions {
-    margin-top: 11px;
-}
-
-/* 表格阴影去除 */
-.Post .Post-body table{
-	box-shadow: none;
-}
-
-/* 卡片主题 */
-.IndexPage .DiscussionListItem,
-.UserPage .DiscussionListItem,
-.DiscussionPage-discussion .DiscussionListItem{ 
-    transition: all 0.1s; /* 动画时间 */
-}
-@media (min-width: 991px){
-    .IndexPage .DiscussionList-discussions&gt;li:not(:first-child) .DiscussionListItem:hover{ /* 悬浮效果 */
-        transform: scale(1.01); /* 缩放 */
-    }
-}
-
-@media (min-width: 768px){ /* pc 端 */
-.IndexPage .DiscussionListItem-content,
-.UserPage .DiscussionListItem-content,
-.DiscussionPage-discussion .DiscussionListItem-content{ /* 首页、用户页、讨论页卡片大小、描边 */
-    padding-left: 80px;
-    padding-right: 80px;
-    padding-top: 10px;
-    border-radius: 8px;
-    padding-bottom: 10px;
-    border:1px solid #dbdfe6!important;
-}
-.IndexPage .Post.CommentPost,
-.UserPage .Post.CommentPost,
-.DiscussionPage-discussion .Post.CommentPost {
-    margin-top:20px;
-    border-radius: 8px;
-    border: 1px solid #dbdfe6 !important;
-}
-
-.IndexPage .DiscussionListItem-info&gt;.item-tags,
-.UserPage .DiscussionListItem-info&gt;.item-tags {top: 23px !important;}
-.DiscussionListItem {
-    position: relative;
-    margin-right: 0;
-    padding-right: 0;
-    padding-left: 0;
-    margin-left: 0;
-    border-radius: 8px;
-    margin-top:15px;
-}}
-
-@media (min-width: 768px){
-.IndexPage .DiscussionListItem:hover {
-background-color: #fff;
--webkit-box-shadow: 0px 8px 24px 3px rgba(84,102,134,0.1) !important;
-box-shadow: 0px 8px 24px 3px rgba(84,102,134,0.1) !important;
-}}
-/* banner */
-.WelcomeHero{color: #282828;}
-.Hero h2 { font-size: 25px; font-weight: 700;}
-.Hero { box-shadow: 0px 1px 10px 0 rgba(151,158,181,0.28); background-color: #fff; margin-bottom: 15px;}
-/*.DiscussionHero .TagsLabel .TagLabel { color: #4D698E; }*/
-.WelcomeHero .Hero-subtitle {color: #000;}
-
-/* 未读 */
-.unread .DiscussionListItem-title:after {
-font-family: &quot;Font Awesome 5 Free&quot;;
-font-weight: 600;
-content: &quot;\f111&quot;;
-color: #667c99;
-margin-left: 2px ;
-margin-top:-6px;
-transform: scale(0.5);
-position:absolute;}
-.PostsUserPage .PostsUserPage-list .Post{
-    padding-top:20px;
-}
-/* 会员名录、资料卡片 */
-.UserDirectoryList .UserCard--directory {
-    box-shadow: 0 2px 6px transparent!important;
-    background-color: transparent!important;
-    border: 2px solid rgba(0,0,0,.1);
-    margin-bottom: 15px!important;
-    border-radius: 6px!important;
-}
-.UserCard, .UserCard a {
-    color: #40444a;
-}
-.UserCard {
-    background: #e8ecf3;
-    background-size: 100% 100%;
-}
-.darkenBackground {
-    background: #fff;
-    border-radius: 6px!important;
-}
-.Badge--social {
-    color: #4d698e!important;
-}
-/* 搜索框 */
-.Search-input input {
-    border-radius: 30px;
-}
-
-ul.IndexPage-toolbar-action&gt;li:not(:first-child) {
-    margin-top: 5px;
-}
-.IndexPage-toolbar-action {
-    margin-left: 15px;
-}
-.UserCard.UserCard--popover,
-.UserCard.Hero.UserHero {
-    background: none !important;
-}
-
-.UserCard .Button {
-    color: #667c99;
-    background: rgba(0,0,0,.1);
-}
-/* 欢迎横幅 */
-.Hero {
-    background: url(https://i.loli.net/2020/04/06/X7yt1xWieuTShnE.png) no-repeat top fixed;
-    text-align: center;
-    color: #FFFFFF;
-    height: 180px;
-    width: 100%;
-}</code></pre>
-]]></content>
-    </entry>
     <entry>
         <title type="html"><![CDATA[CentOS 7 安装Flarum中文搜索插件]]></title>
         <id>https://pufengyixia.github.io/post/centos-7-an-zhuang-flarum-zhong-wen-sou-suo-cha-jian/</id>
@@ -914,6 +729,189 @@ Swap:         4095          0       4095</p>
 结论</p>
 <p>通过遵循本指南中的步骤，您将为服务器提供一些内存使用方面的喘息空间。交换空间对于避免一些常见问题非常有用。</p>
 <p>如果遇到OOM（内存不足）错误，或者发现系统无法使用所需的应用程序，则最佳解决方案是优化应用程序配置或升级服务器。但是，配置交换空间可以为您提供更大的灵活性，并可以帮助您在功能不那么强大的服务器上花费时间。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[CSUR站点全局自定义 CSS 样式分享]]></title>
+        <id>https://pufengyixia.github.io/post/csur-zhan-dian-quan-ju-zi-ding-yi-css-yang-shi-fen-xiang/</id>
+        <link href="https://pufengyixia.github.io/post/csur-zhan-dian-quan-ju-zi-ding-yi-css-yang-shi-fen-xiang/">
+        </link>
+        <updated>2020-05-16T11:47:12.000Z</updated>
+        <content type="html"><![CDATA[<p>复制CSS 样式到后台管理-外观-自定义样式，选择两种颜色作为论坛主色调。第一种作为突出显示颜色#F18300，第二种作为背景等元素的颜色#E7672E，然后启用彩色导航栏。</p>
+<pre><code class="language-/*">.UserDirectoryList-loadMore .Button,
+.DiscussionList-loadMore .Button {
+	 width: 50%;
+         border-radius: 30px;
+         margin-top: 30px;
+}
+.UserDirectoryList-loadMore {
+    text-align: center;
+}
+@media (max-width: 767px) {
+	.DiscussionList-loadMore {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+/* 替换点赞, 回复按钮 */
+.item-like .Button--link .Button-label,
+.item-reply .Button--link .Button-label{
+    display: none;
+}
+.item-like .Button:before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 600;
+    font-size: 14px;
+    content: '\f164';
+    vertical-align: -1px;
+}
+.item-reply .Button--link:before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 600;
+    font-size: 15px;
+    content: '\f3e5';
+    margin-right: 4px;
+    vertical-align: -2px;
+}
+
+/* 首页主题点击量对齐 */
+@media (min-width: 768px){
+	.IndexPage li.item-discussion-views {
+		margin-right: -70px;
+		width: 55px;
+	}
+}
+
+/* 反应按钮位置 */
+.Post-actions .Reactions .Reactions--ShowReactions {
+    margin-top: 11px;
+}
+
+/* 表格阴影去除 */
+.Post .Post-body table{
+	box-shadow: none;
+}
+
+/* 卡片主题 */
+.IndexPage .DiscussionListItem,
+.UserPage .DiscussionListItem,
+.DiscussionPage-discussion .DiscussionListItem{ 
+    transition: all 0.1s; /* 动画时间 */
+}
+@media (min-width: 991px){
+    .IndexPage .DiscussionList-discussions&gt;li:not(:first-child) .DiscussionListItem:hover{ /* 悬浮效果 */
+        transform: scale(1.01); /* 缩放 */
+    }
+}
+
+@media (min-width: 768px){ /* pc 端 */
+.IndexPage .DiscussionListItem-content,
+.UserPage .DiscussionListItem-content,
+.DiscussionPage-discussion .DiscussionListItem-content{ /* 首页、用户页、讨论页卡片大小、描边 */
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 10px;
+    border-radius: 8px;
+    padding-bottom: 10px;
+    border:1px solid #dbdfe6!important;
+}
+.IndexPage .Post.CommentPost,
+.UserPage .Post.CommentPost,
+.DiscussionPage-discussion .Post.CommentPost {
+    margin-top:20px;
+    border-radius: 8px;
+    border: 1px solid #dbdfe6 !important;
+}
+
+.IndexPage .DiscussionListItem-info&gt;.item-tags,
+.UserPage .DiscussionListItem-info&gt;.item-tags {top: 23px !important;}
+.DiscussionListItem {
+    position: relative;
+    margin-right: 0;
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 0;
+    border-radius: 8px;
+    margin-top:15px;
+}}
+
+@media (min-width: 768px){
+.IndexPage .DiscussionListItem:hover {
+background-color: #fff;
+-webkit-box-shadow: 0px 8px 24px 3px rgba(84,102,134,0.1) !important;
+box-shadow: 0px 8px 24px 3px rgba(84,102,134,0.1) !important;
+}}
+/* banner */
+.WelcomeHero{color: #282828;}
+.Hero h2 { font-size: 25px; font-weight: 700;}
+.Hero { box-shadow: 0px 1px 10px 0 rgba(151,158,181,0.28); background-color: #fff; margin-bottom: 15px;}
+/*.DiscussionHero .TagsLabel .TagLabel { color: #4D698E; }*/
+.WelcomeHero .Hero-subtitle {color: #000;}
+
+/* 未读 */
+.unread .DiscussionListItem-title:after {
+font-family: &quot;Font Awesome 5 Free&quot;;
+font-weight: 600;
+content: &quot;\f111&quot;;
+color: #667c99;
+margin-left: 2px ;
+margin-top:-6px;
+transform: scale(0.5);
+position:absolute;}
+.PostsUserPage .PostsUserPage-list .Post{
+    padding-top:20px;
+}
+/* 会员名录、资料卡片 */
+.UserDirectoryList .UserCard--directory {
+    box-shadow: 0 2px 6px transparent!important;
+    background-color: transparent!important;
+    border: 2px solid rgba(0,0,0,.1);
+    margin-bottom: 15px!important;
+    border-radius: 6px!important;
+}
+.UserCard, .UserCard a {
+    color: #40444a;
+}
+.UserCard {
+    background: #e8ecf3;
+    background-size: 100% 100%;
+}
+.darkenBackground {
+    background: #fff;
+    border-radius: 6px!important;
+}
+.Badge--social {
+    color: #4d698e!important;
+}
+/* 搜索框 */
+.Search-input input {
+    border-radius: 30px;
+}
+
+ul.IndexPage-toolbar-action&gt;li:not(:first-child) {
+    margin-top: 5px;
+}
+.IndexPage-toolbar-action {
+    margin-left: 15px;
+}
+.UserCard.UserCard--popover,
+.UserCard.Hero.UserHero {
+    background: none !important;
+}
+
+.UserCard .Button {
+    color: #667c99;
+    background: rgba(0,0,0,.1);
+}
+/* 欢迎横幅 */
+.Hero {
+    background: url(https://i.loli.net/2020/04/06/X7yt1xWieuTShnE.png) no-repeat top fixed;
+    text-align: center;
+    color: #FFFFFF;
+    height: 180px;
+    width: 100%;
+}</code></pre>
 ]]></content>
     </entry>
     <entry>
