@@ -2,13 +2,28 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://pufengyixia.github.io</id>
     <title>pufengyixia</title>
-    <updated>2020-05-17T02:44:46.126Z</updated>
+    <updated>2020-05-17T02:53:30.911Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://pufengyixia.github.io"/>
     <link rel="self" href="https://pufengyixia.github.io/atom.xml"/>
     <logo>https://pufengyixia.github.io/images/avatar.png</logo>
     <icon>https://pufengyixia.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, pufengyixia</rights>
+    <entry>
+        <title type="html"><![CDATA[Flarum页脚心动插件]]></title>
+        <id>https://pufengyixia.github.io/post/flarum-ye-jiao-xin-dong-cha-jian/</id>
+        <link href="https://pufengyixia.github.io/post/flarum-ye-jiao-xin-dong-cha-jian/">
+        </link>
+        <updated>2020-05-16T19:51:09.000Z</updated>
+        <content type="html"><![CDATA[<pre><code>下载下面的文件，上传到服务器 Flarum 安装目录 &gt; public
+
+&lt;https://bbs.csur.fun/selfJS/JSClickBubble.js&gt;
+
+在自定义页脚加入下方代码
+
+&lt;script src=&quot;https://你的 Flarum 站点网址/JSClickBubble.js&quot;&gt;&lt;/script&gt;</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CentOS 7 安装Flarum中文搜索插件]]></title>
         <id>https://pufengyixia.github.io/post/centos-7-an-zhuang-flarum-zhong-wen-sou-suo-cha-jian/</id>
