@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Flarum页脚心动插件 | pufengyixia</title>
+<title>如何创建Flarum自己的域名邮箱 | pufengyixia</title>
 <meta name="description" content="">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -81,20 +81,55 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>Flarum页脚心动插件</h1>
+            <h1>如何创建Flarum自己的域名邮箱</h1>
             <p class="article-meta">
-              2020-05-16
+              2020-05-19
               
             </p>
             
             <div class="post-content">
-              <pre><code>下载下面的文件，上传到服务器 Flarum 安装目录 &gt; public
-
-https://bbs.csur.fun/selfJS/JSClickBubble.js
-
-在自定义页脚加入下方代码
-
-&lt;script src=&quot;https://你的 Flarum 站点网址/JSClickBubble.js&quot;&gt;&lt;/script&gt;</code></pre>
+              <p>Postale.io 域名邮箱，免费，匿名，唯一一点就是不支持2步验证，发邮件基本上不会被送到收件方的垃圾箱，最爽的是可以自定义邮件的重要级别：<br>
+<img src="https://www.fi-ads.com/wp-content/uploads/2020/05/postale-domain-mail-1024x511.jpg" alt="" loading="lazy"><br>
+Postale 的官网：https://postale.io/</p>
+<p>需要准备的东西：1个域名+1个CloudFlare账户；</p>
+<p>域名可以在任何地方购买，我以在NameSilo购买的域名为例：然后修改域名的NS，如图：<br>
+<img src="https://www.fi-ads.com/wp-content/uploads/2020/05/namesilo-change-ns.jpg" alt="" loading="lazy"><br>
+然后在CloudFlare中添加你的域名，并按照流程一步一步的操作，获取到你CloudFlare的NS地址：<br>
+<img src="https://www.fi-ads.com/wp-content/uploads/2020/05/cloudflare-ns.jpg" alt="" loading="lazy"><br>
+把你的NameSilo域名下面的3个NS地址删除，然后替换成CloudFlare给出的2个NS地址；点击保存，你的域名解析就可以完全交给CF了.</p>
+<p>接下来，注册一个Postale的账户；我以我的域名ad-mit.com为例，注册流程如图：<br>
+<img src="https://www.fi-ads.com/wp-content/uploads/2020/05/postale-s1.jpg" alt="" loading="lazy"><br>
+接下来，创建成功，如图，这个页面是包含了MX的解析和TXT的验证信息：<br>
+<img src="https://www.fi-ads.com/wp-content/uploads/2020/05/postale-s2-1024x593.jpg" alt="" loading="lazy"><br>
+添加MX的解析如图（参考配置页面信息，每个人应该都一样）：<br>
+<img src="https://www.fi-ads.com/wp-content/uploads/2020/05/postale-s3.jpg" alt="" loading="lazy"><br>
+完成之后点击保存<br>
+添加TXT记录第一条（参考配置页面信息，每个人应该都一样）：<br>
+<img src="https://www.fi-ads.com/wp-content/uploads/2020/05/postale-s4.jpg" alt="" loading="lazy"><br>
+添加TXT记录第二条（参考配置页面信息，每个人应该都一样）：<br>
+<img src="https://www.fi-ads.com/wp-content/uploads/2020/05/postale-s5.jpg" alt="" loading="lazy"><br>
+添加TXT记录第三条（参考配置页面信息，这是每个人都不一样的地方）：<br>
+<img src="https://www.fi-ads.com/wp-content/uploads/2020/05/postale-s6.jpg" alt="" loading="lazy"><br>
+添加完记录之后，返回Postale网站，点击确认检查记录：<br>
+<img src="https://www.fi-ads.com/wp-content/uploads/2020/05/postale-s7-1024x565.jpg" alt="" loading="lazy"><br>
+如果所有设置都是正确的，你会获得用户名和密码：<br>
+<img src="https://www.fi-ads.com/wp-content/uploads/2020/05/postale-s8-1024x690.jpg" alt="" loading="lazy"><br>
+最后，进入邮箱，给自己的QQ邮箱发送一封邮件测试，看看你能否顺利的收到邮件。如果收到了，在回复一下，看看你的域名邮箱能否收到回复邮件。</p>
+<p>你也可以进入后台管理面板，创建更多的不同前缀的域名邮箱，如图：<br>
+<img src="https://www.fi-ads.com/wp-content/uploads/2020/05/postale-s91.jpg" alt="" loading="lazy"><br>
+到这里，你的Postale邮箱基本上就已经完全设置好了。可以正常的收发邮件。</p>
+<p>使用您喜欢的邮件客户端配置SMTP</p>
+<p>您可以将域电子邮件与任何喜欢的邮件客户端（Gmail，Outlook，Thunderbird等）一起使用。只需打开客户端，然后使用以下设置添加您的帐户（将john.doe@yourdomain.com替换为您的实际域电子邮件）。</p>
+<p>SMTP<br>
+主办	mail.postale.io<br>
+港口	TLS 为587 或 SSL 为465<br>
+SSL / TLS	是，需要验证<br>
+用户名	john.doe@yourdomain.com</p>
+<p>IMAP（首选）或POP3<br>
+主办	mail.postale.io<br>
+港口	993为IMAP 或 995 POP3<br>
+SSL / TLS	是<br>
+用户名	john.doe@yourdomain.com</p>
 
             </div>
           </article>
@@ -105,9 +140,9 @@ https://bbs.csur.fun/selfJS/JSClickBubble.js
               <div class="next">
                 下一篇
               </div>
-              <a href="https://pufengyixia.github.io/post/flarum-wang-zhan-shi-yong-gong-ju/">
+              <a href="https://pufengyixia.github.io/post/zhen-dui-flarums-de-seo-he-robottxt-you-hua/">
                 <h3 class="post-title">
-                  Flarum发帖实用工具
+                  针对Flarums的SEO和robot.txt优化
                 </h3>
               </a>
             </div>
