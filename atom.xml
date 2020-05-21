@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://pufengyixia.github.io</id>
     <title>pufengyixia</title>
-    <updated>2020-05-21T22:58:32.183Z</updated>
+    <updated>2020-05-21T23:01:02.557Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://pufengyixia.github.io"/>
     <link rel="self" href="https://pufengyixia.github.io/atom.xml"/>
@@ -406,21 +406,6 @@ Swap:         4095          0       4095</p>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Flarum页脚心动插件]]></title>
-        <id>https://pufengyixia.github.io/post/flarum-ye-jiao-xin-dong-cha-jian/</id>
-        <link href="https://pufengyixia.github.io/post/flarum-ye-jiao-xin-dong-cha-jian/">
-        </link>
-        <updated>2020-05-16T12:51:09.000Z</updated>
-        <content type="html"><![CDATA[<pre><code>下载下面的文件，上传到服务器 Flarum 安装目录 &gt; public
-
-https://bbs.csur.fun/selfJS/JSClickBubble.js
-
-在自定义页脚加入下方代码
-
-&lt;script src=&quot;https://你的 Flarum 站点网址/JSClickBubble.js&quot;&gt;&lt;/script&gt;</code></pre>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Flarum发帖实用工具]]></title>
         <id>https://pufengyixia.github.io/post/flarum-wang-zhan-shi-yong-gong-ju/</id>
         <link href="https://pufengyixia.github.io/post/flarum-wang-zhan-shi-yong-gong-ju/">
@@ -649,6 +634,23 @@ ul.IndexPage-toolbar-action&gt;li:not(:first-child) {
     height: 180px;
     width: 100%;
 }</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Flarum页脚心动插件]]></title>
+        <id>https://pufengyixia.github.io/post/flarum-ye-jiao-xin-dong-cha-jian/</id>
+        <link href="https://pufengyixia.github.io/post/flarum-ye-jiao-xin-dong-cha-jian/">
+        </link>
+        <updated>2020-05-16T05:51:09.000Z</updated>
+        <content type="html"><![CDATA[<pre><code>下载下面的文件，上传到服务器 Flarum 安装目录 &gt; public
+public目录里面新建文件夹命名为selfJS
+把JSClickBubble.js文件放入selfJS文件夹
+
+https://bbs.csur.fun/selfJS/JSClickBubble.js
+
+在自定义页脚加入下方代码
+
+&lt;script src=&quot;https://你的 Flarum 站点网址/JSClickBubble.js&quot;&gt;&lt;/script&gt;</code></pre>
 ]]></content>
     </entry>
 </feed>
