@@ -2,13 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://pufengyixia.github.io</id>
     <title>pufengyixia</title>
-    <updated>2020-05-21T23:01:02.557Z</updated>
+    <updated>2020-05-24T02:00:44.090Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://pufengyixia.github.io"/>
     <link rel="self" href="https://pufengyixia.github.io/atom.xml"/>
     <logo>https://pufengyixia.github.io/images/avatar.png</logo>
     <icon>https://pufengyixia.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, pufengyixia</rights>
+    <entry>
+        <title type="html"><![CDATA[Flarum构建安卓APP]]></title>
+        <id>https://pufengyixia.github.io/post/flarum-gou-jian-an-zhuo-app/</id>
+        <link href="https://pufengyixia.github.io/post/flarum-gou-jian-an-zhuo-app/">
+        </link>
+        <updated>2020-05-23T18:48:40.000Z</updated>
+        <content type="html"><![CDATA[<p>Convert any PWA (Progressive web app) to Google Play Ready Apps.<br>
+Easily generate PWApk for your PWA site.<br>
+<a href="https://appmaker.xyz/pwa-to-apk/">PWA2APK</a><br>
+<a href="https://appmaker.xyz/pwa-to-apk/">https://appmaker.xyz/pwa-to-apk/</a></p>
+<p>除了你的Flarum站点支持PWA插件以外，在你的网址根目录里面还需要新建一个 .well-known命名的文件夹，把PWA2APK网站生成的assetlinks.json放到.well-known文件夹里面，这样APP就不会显示导航栏里的网址了，更像一个原生APP。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[如何创建Flarum自己的域名邮箱]]></title>
         <id>https://pufengyixia.github.io/post/ru-he-chuang-jian-flarum-zi-ji-de-yu-ming-you-xiang/</id>
@@ -634,23 +647,6 @@ ul.IndexPage-toolbar-action&gt;li:not(:first-child) {
     height: 180px;
     width: 100%;
 }</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Flarum页脚心动插件]]></title>
-        <id>https://pufengyixia.github.io/post/flarum-ye-jiao-xin-dong-cha-jian/</id>
-        <link href="https://pufengyixia.github.io/post/flarum-ye-jiao-xin-dong-cha-jian/">
-        </link>
-        <updated>2020-05-16T05:51:09.000Z</updated>
-        <content type="html"><![CDATA[<pre><code>下载下面的文件，上传到服务器 Flarum 安装目录 &gt; public
-public目录里面新建文件夹命名为selfJS
-把JSClickBubble.js文件放入selfJS文件夹
-
-https://bbs.csur.fun/selfJS/JSClickBubble.js
-
-在自定义页脚加入下方代码
-
-&lt;script src=&quot;https://你的 Flarum 站点网址/JSClickBubble.js&quot;&gt;&lt;/script&gt;</code></pre>
 ]]></content>
     </entry>
 </feed>
